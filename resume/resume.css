@@ -1,0 +1,212 @@
+/* =========================
+   Kamil Sahil — Resume CSS
+   (matches the two-column look in your reference)
+   ========================= */
+
+/* ---------- Theme ---------- */
+:root{
+  --bg: #eef2f5;
+  --page: #ffffff;
+  --ink: #1f2937;           /* slate 800 */
+  --muted: #6b7280;         /* gray 500 */
+  --sidebar-bg: #122034;    /* dark blue-gray */
+  --sidebar-decor: #0e192a;
+  --chip-bg: #e9eef3;       /* light gray chip */
+  --chip-border: #cfd8e3;
+  --accent: #2bb7a3;        /* teal (name underline, bullets) */
+  --accent-2: #3b82f6;      /* blue for subtitle/links */
+  --card-bg: #0f1a2c;       /* contact card dark */
+  --card-border: #0e1726;
+  --border: #e5e7eb;
+  --link: #2563eb;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  line-height:1.55;
+}
+
+/* ---------- Page shell (two columns) ---------- */
+#resume{
+  max-width: 980px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+#layout{
+  display:grid;
+  grid-template-columns: 300px 1fr;
+  gap:0;
+  background:var(--page);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.12);
+}
+
+/* ---------- Sidebar ---------- */
+#sidebar{
+  background:
+    radial-gradient(800px 400px at -20% -20%, #1b2b41 0%, transparent 60%),
+    linear-gradient(160deg, var(--sidebar-bg), var(--sidebar-decor));
+  color:#e5e7eb;
+  padding:28px 24px 28px 24px;
+}
+#sidebar .section-title{
+  font-size:14px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#cbd5e1;
+  margin:18px 0 10px;
+}
+#avatar{
+  margin:4px auto 18px auto;
+  text-align:center;
+}
+#avatar-img{
+  width:118px; height:118px; border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(255,255,255,.18);
+  box-shadow: 0 6px 18px rgba(0,0,0,.35);
+  display:block; margin:0 auto;
+}
+#avatar .avatar-caption{
+  font-weight:700; font-size:18px; letter-spacing:.4px; color:#cbd5e1; margin-top:8px;
+}
+
+.tag-list{list-style:none; margin:0; padding:0}
+.tag-list .tag{
+  display:inline-block;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:#203040;
+  border-radius:999px;
+  padding:6px 10px;
+  margin:6px 6px 0 0;
+  font-size:12px;
+}
+
+#sidebar .list{list-style:none; margin:0; padding:0}
+#sidebar .list-item{
+  font-size:14px;
+  color:#d1d5db;
+  margin:6px 0;
+}
+
+/* thin divider look like the ref */
+#sidebar .section + .section{ margin-top:20px; border-top: 1px solid #1f2b3c; padding-top:14px }
+
+/* ---------- Main header ---------- */
+.header{
+  padding:24px 24px 0 24px;
+}
+.candidate-name{
+  font-size:34px; line-height:1.1; margin:0 0 2px 0;
+  border-bottom: 3px solid var(--accent);
+  display:inline-block; padding-bottom:4px;
+}
+.candidate-role{
+  margin:6px 0 14px 0;
+  color: var(--accent-2);
+  font-weight:600;
+}
+.contact-list{
+  display:flex; flex-wrap:wrap; gap:10px 18px;
+  list-style:none; margin:0; padding:0;
+  color:#334155;
+}
+.contact-list a{ color:var(--link); text-decoration:none }
+.contact-list a:hover{ text-decoration:underline }
+.toc{ display:none } /* keep anchors but hide the TOC for the resume look */
+
+/* ---------- Main area ---------- */
+#main{ padding: 0 28px 28px 28px }
+
+/* Contact “card” under summary like the ref */
+.contact-card{
+  margin:16px 0;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  /* background-color: #023a6e; */
+  color:#e5e7eb;
+  padding:14px 16px;
+}
+.contact-card .row{
+  display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+}
+@media (max-width:900px){
+  .contact-card .row{ grid-template-columns: 1fr }
+}
+
+/* ---------- Sections ---------- */
+.section{ margin-top:18px }
+.section-title{
+  font-size:18px;
+  margin:0 0 8px 0;
+  display:flex; align-items:center; gap:10px;
+}
+.section-title::before{
+  content:""; width:12px; height:12px; border-radius:50%;
+  background:var(--accent);
+  display:inline-block;
+}
+
+/* ---------- Summary ---------- */
+.section-summary .para{ margin:0 }
+
+/* ---------- Experience ---------- */
+.section-experience .job{ padding:14px 0; border-top:1px solid var(--border) }
+.section-experience .job:first-of-type{ border-top:none }
+.job-title{ margin:0 0 2px 0; font-size:16px; font-weight:700 }
+.job-meta{
+  font-size:13px; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-bottom:6px;
+}
+.job-bullets{ margin:6px 0 0 18px }
+.job-bullets .job-bullet{
+  margin:6px 0;
+  position:relative;
+}
+.job-bullets .job-bullet::marker{ color:var(--accent) } /* green/teal bullet markers */
+
+/* ---------- Projects / Certifications / Education ---------- */
+.section-projects .list,
+.section-certs .list,
+.section-education .edu{ margin:0; padding:0 }
+
+.section-projects .list{ list-style:disc; padding-left:18px }
+.section-certs .list{ list-style:disc; padding-left:18px }
+
+.edu{ padding:12px 0; border-top:1px solid var(--border) }
+.edu:first-of-type{ border-top:none }
+.edu-degree{ margin:0 0 2px 0; font-size:16px; font-weight:700 }
+.edu-meta{
+  font-size:13px; color:var(--muted);
+  display:flex; flex-wrap:wrap; gap:8px; margin-bottom:4px;
+}
+.edu-focus{ margin:6px 0 0 0 }
+
+/* ---------- Footer ---------- */
+.footer{ margin-top:14px; color:var(--muted); font-size:12px }
+
+/* ---------- Responsiveness ---------- */
+@media (max-width: 900px){
+  #layout{ grid-template-columns: 1fr }
+  #main{ padding: 0 18px 24px 18px }
+  .header{ padding:18px 18px 0 18px }
+}
+
+/* ---------- Print ---------- */
+@page{ size: A4; margin: 12mm }
+@media print{
+  body{ background:#fff }
+  #resume{ margin:0; padding:0 }
+  #layout{ box-shadow:none }
+  .contact-list a::after{ content:" (" attr(href) ")"; }
+  .toc{ display:none }
+}

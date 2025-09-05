@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#0b1220"/>
+  <text x="40" y="70" fill="#e6ebf5" font-size="28" font-weight="700" font-family="Segoe UI, Roboto, Arial">Power BI</text>
+  <g fill="#22d3ee">
+    <rect x="80" y="250" width="60" height="80"/>
+    <rect x="160" y="210" width="60" height="120"/>
+    <rect x="240" y="170" width="60" height="160"/>
+    <rect x="320" y="190" width="60" height="140"/>
+    <rect x="400" y="120" width="60" height="210"/>
+    <rect x="480" y="220" width="60" height="110"/>
+  </g>
+</svg>

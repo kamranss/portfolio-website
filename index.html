@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kamil Sahil — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Portfolio and project showcase" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#about" aria-label="Go to About">
+        <span class="brand-mark">KS</span>
+        <span class="brand-text">Kamran Suleyman</span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="docs/certificates.html">Certificates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT / RESUME-LIKE HERO -->
+    <section id="about" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Technical Product Owner · Data/Software Projects</h1>
+          <p>
+            I bridge business goals with practical delivery across backend,
+            frontend, analytics, and automation. My portfolio below includes
+            Python notebooks, Power BI dashboards, and web apps each with a
+            clear problem, approach, and result.
+          </p>
+          <div class="hero-cta">
+            <a class="btn" href="#projects">Explore Projects</a>
+            <a class="btn ghost" href="docs/Kamran_Suleyman_Resume.pdf" target="_blank" aria-disabled="true">Download Resume</a>
+            <a class="btn" href="resume/index.html" target="_blank" rel="noopener">View Resume</a>
+          </div>
+          <ul class="chips" aria-label="Key skills">
+            <li>.NET · SQL Server</li>
+            <li>Python · Pandas</li>
+            <li>Power BI</li>
+            <li>JavaScript</li>
+            <li>APIs & Integrations</li>
+          </ul>
+        </div>
+        <div class="hero-card">
+          <div class="bio-card">
+            <h3>Quick Profile</h3>
+            <dl>
+              <dt>Location</dt><dd>St. Louis, MO</dd>
+              <dt>Focus</dt><dd>Product Ownership · Data · Web</dd>
+              <dt>Open to</dt><dd>Junior/Mid Level roles & Internships</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p class="muted">Filter by type to find what you need.</p>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Project filters">
+          <button class="filter-btn active" data-filter="All" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="Backend" role="tab" aria-selected="false">Backend</button>
+          <button class="filter-btn" data-filter="Frontend" role="tab" aria-selected="false">Frontend</button>
+          <button class="filter-btn" data-filter="Jupyter" role="tab" aria-selected="false">Jupyter Notebook</button>
+             <button class="filter-btn" data-filter="Jupyter" role="tab" aria-selected="false">Google Colab</button>
+          <button class="filter-btn" data-filter="Power BI" role="tab" aria-selected="false">Power BI</button>
+          <button class="filter-btn" data-filter="Data" role="tab" aria-selected="false">Data Engineering</button>
+          <button class="filter-btn" data-filter="DevOps" role="tab" aria-selected="false">DevOps</button>
+          <button class="filter-btn" data-filter="Mobile" role="tab" aria-selected="false">Mobile</button>
+        </div>
+
+        <div id="projectGrid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container contact-inner">
+        <h2>Contact</h2>
+        <p>Want to collaborate or learn more?</p>
+        <ul class="contact-list">
+          <li><a href="mailto:hello@example.com">kamransuleymanov@hotmail.com</a></li>
+          <li><a href="https://github.com/kamranss" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="#" aria-disabled="true">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- DETAIL DRAWER -->
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+  <aside id="detailDrawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
+    <button class="drawer-close" aria-label="Close details">&times;</button>
+    <div class="drawer-scroll">
+      <img id="drawerImage" class="drawer-image" alt="" />
+      <div class="drawer-body">
+        <h3 id="drawerTitle"></h3>
+        <p id="drawerShort"></p>
+        <div class="meta">
+          <div><strong>Year:</strong> <span id="drawerYear"></span></div>
+          <div><strong>Type:</strong> <span id="drawerCats"></span></div>
+          <div><strong>Tech:</strong> <span id="drawerTech"></span></div>
+        </div>
+        <p id="drawerLong" class="drawer-long"></p>
+        <div class="drawer-links">
+          <a id="drawerGit" class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> kamran Suleyman. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
