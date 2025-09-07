@@ -13,6 +13,14 @@
   --card: #101a34;
   --border: rgba(255,255,255,0.08);
   --shadow: 0 8px 30px rgba(0,0,0,0.35);
+
+}
+
+
+:root{
+  --bg:#0b1220; --panel:#0f1830; --ink:#e6ebf5; --muted:#9aa3b2;
+  --brand:#60a5fa; --accent:#22d3ee; --border:rgba(255,255,255,0.08);
+  --chip:rgba(255,255,255,0.06); --shadow:0 8px 30px rgba(0,0,0,0.35);
 }
 
 *{box-sizing:border-box}
@@ -31,7 +39,7 @@ body{
 }
 
 /* Utilities */
-.container{width:min(1100px, 92%); margin-inline:auto}
+.container{width:min(1100px, 92%); margin-inline:auto}  
 .muted{color:var(--muted)}
 
 .btn{
@@ -201,4 +209,64 @@ body{
 /* Responsive tweaks */
 @media (max-width: 900px){
   .hero-inner { grid-template-columns: 1fr; }
+}
+
+
+/* Skills Section */
+.skills {
+  padding: 3rem 0;
+}
+
+.skills h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.skill {
+  grid-column: span 6;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.meter {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  margin: .6rem 0 .3rem;
+  overflow: hidden;
+}
+
+.meter > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.skill p {
+  margin: .2rem 0 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+@media (max-width: 900px) {
+  .skill {
+    grid-column: span 12;
+  }
 }

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certificates — Kamil Sahil</title>
+  <link rel="stylesheet" href="certificates.css" />
+  <meta name="description" content="Professional certifications" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">KS</span><span class="brand-text">Kamil Sahil</span>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="active" href="certificates.html">Certificates</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="certs">
+    <div class="container">
+      <div class="layout">
+        <section class="viewer" aria-label="Certificate viewer">
+          <div class="viewer-frame">
+            <iframe id="pdfFrame" title="Certificate PDF" src="certificates/certificate-pspo.pdf"></iframe>
+          </div>
+          <div class="viewer-actions">
+            <a id="btnOpenPDF" class="btn" href="certificates/certificate-pspo.pdf" target="_blank" rel="noopener">Open in new tab</a>
+            <a id="btnDownloadPDF" class="btn ghost" href="certificates/certificate-pspo.pdf" download>Download PDF</a>
+          </div>
+        </section>
+
+        <aside class="details">
+          <div class="details-card">
+            <h1 id="certTitle">Professional Scrum Product Owner (PSPO I)</h1>
+            <p id="certMeta" class="muted">Scrum.org · Issued 2024</p>
+            <p id="certDesc">Validated knowledge of Product Ownership, value delivery, and backlog management. Score ≥85%.</p>
+            <div class="tags" id="certTags">
+              <span>Agile</span><span>Scrum</span><span>Product</span>
+            </div>
+          </div>
+
+          <h2 class="list-head">All Certificates</h2>
+          <ul id="certList" class="cert-list" aria-label="Certificates list"></ul>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Kamil Sahil. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="certificates.js"></script>
+</body>
+</html>
