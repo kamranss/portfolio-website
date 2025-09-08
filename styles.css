@@ -270,3 +270,37 @@ body{
     grid-column: span 12;
   }
 }
+
+/* modal view */
+
+.modal-body h4 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.modal-body ul {
+  margin: .5rem 0 .8rem 1.2rem;
+  padding: 0;
+  list-style: disc;
+}
+
+.modal-body code {
+  background: rgba(255,255,255,0.06);
+  padding: 0 .3rem;
+  border-radius: .3rem;
+  font-family: monospace;
+  font-size: .9rem;
+}
+
+.modal-body a {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+/* Drawer article formatting */
+.drawer-long h4 { margin-top: 1rem; font-size: 1.05rem; color: var(--accent); }
+.drawer-long p  { margin: .35rem 0 .6rem; }
+.drawer-long ul { margin: .3rem 0 .8rem 1.2rem; list-style: disc; }
+.drawer-long li { margin: .2rem 0; }
+.drawer-long code { background: rgba(255,255,255,0.06); padding: 0 .3rem; border-radius: .25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .9rem; }
+.drawer-long a { color: var(--accent); text-decoration: underline; }

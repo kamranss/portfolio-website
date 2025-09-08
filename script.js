@@ -17,15 +17,56 @@ integration specs with Railway, Customs, and Finance systems.`,
     github: "#",
     demo: "#"
   },
-  {
+   {
     id: "sales-sql-python",
     title: "Sales Management: SQL + Python",
     categories: ["Jupyter", "Data"],
     year: 2025,
-    image: "assets/jupyter.svg",
+    image: "assets/sales-management.png",
     short: "SQL schema + Python (pyodbc/pandas) analytics with charts and insights.",
-    long: `Built a sales DB schema, seeded realistic data, and used Python to query,
-aggregate, and visualize trends (customer segments, state performance, salespeople).`,
+    long: `
+      <h4>📊 Introduction</h4>
+      <p>Designed a <strong>sales management database in SQL Server</strong>, filled it with sample customer, order, and product data, then connected with <strong>Python (pyodbc)</strong> to run queries and visualize insights with Pandas + Matplotlib.</p>
+      
+      <h4>🗄 Step 1 — Database Setup</h4>
+      <p>Created <code>sales_management</code> database with 5 tables: <em>SalesPerson, State, Customer, Order, OrderDetail</em>. Inserted realistic sample data (DDL + DML in repo).</p>
+      
+      <h4>🐍 Step 2 — Python Integration</h4>
+      <p>Connected to SQL Server with <code>pyodbc</code>, queried sales data, and pulled results into Pandas DataFrames for analysis.</p>
+      
+      <h4>📊 Step 3 — Sales by Customer</h4>
+      <p>Aggregated order totals per customer. Highlighted high-value customers with color-coded bar charts in Matplotlib.</p>
+      
+      <h4>🌍 Step 4 — Sales by State</h4>
+      <p>Grouped sales revenue by U.S. state to compare regional performance. Used visual cues (colors + labels) for clarity.</p>
+      
+      <h4>📑 Step 5 — Key Takeaways</h4>
+      <ul>
+        <li>SQL + Python = powerful combo for reporting</li>
+        <li>Views & joins simplify queries</li>
+        <li>Visualization makes trends clear to stakeholders</li>
+        <li>Presenting results (slides) is as important as code</li>
+      </ul>
+      
+      <h4>🚀 Why It Matters</h4>
+      <p>Demonstrates <strong>SQL schema design</strong>, <strong>analytics queries</strong>, <strong>Python integration</strong>, <strong>visualization</strong>, and <strong>communication</strong> — exactly what analysts and data engineers do in real companies.</p>
+      
+      <h4>🔗 Resources</h4>
+      <ul>
+        <li>📂 SQL schema: <code>sales_management.sql</code></li>
+        <li>🐍 Python notebook: <code>Pythontosql.ipynb</code></li>
+        <li>📑 Slides: <code>Lab3_Presentation.pptx</code></li>
+        <li>💻 GitHub Repo: <a href="https://github.com/kamranss/python-sql-sales-analysis" target="_blank">View on GitHub</a></li>
+        <li>📝 Medium Post: <a href="https://medium.com/@mr.kamran.suleyman/sales-management-data-project-sql-python-for-analysis-44d6b1220124" target="_blank">Read Article</a></li>
+      </ul>
+      
+      <h4>✨ Next Steps</h4>
+      <ul>
+        <li>Automate reporting with scheduled Python jobs</li>
+        <li>Extend to dashboards in Power BI/Tableau</li>
+        <li>Explore predictive analytics on customer sales trends</li>
+      </ul>
+    `,
     tech: ["SQL Server", "Python", "pandas", "matplotlib"],
     github: "https://github.com/kamranss/python-sql-sales-analysis",
     demo: "#"
@@ -88,62 +129,78 @@ branch protections for reliable releases.`,
   year: 2025,
  image: "assets/montecarlo1.png",
   short: "Stochastic portfolio simulation (AAPL, MSFT, AMZN, GOOG, TSLA) with risk bounds & efficient frontier.",
-  long: `Introduction
-Financial markets are uncertain. I used a Monte Carlo simulation to model a 5-stock tech portfolio (AAPL, MSFT, AMZN, GOOG, TSLA), based on ~5 years of daily data.
+long: `
+  <h4>📊 Introduction</h4>
+  <p>Financial markets are uncertain. I used a Monte Carlo simulation to model a 5-stock tech portfolio (<strong>AAPL, MSFT, AMZN, GOOG, TSLA</strong>) based on ~5 years of daily data.</p>
 
-What I used
-• Libraries: numpy, pandas, yfinance, matplotlib
-• Tickers: AAPL, MSFT, AMZN, GOOG, TSLA
-• Horizon: ~5 years of daily prices
+  <h4>🧰 What I used</h4>
+  <ul>
+    <li><strong>Libraries:</strong> numpy, pandas, yfinance, matplotlib</li>
+    <li><strong>Tickers:</strong> AAPL, MSFT, AMZN, GOOG, TSLA</li>
+    <li><strong>Horizon:</strong> ~5 years of daily prices</li>
+  </ul>
 
-1) Setup & Libraries
-pip install numpy pandas yfinance matplotlib
+  <h4>1) Setup & Libraries</h4>
+  <pre><code>pip install numpy pandas yfinance matplotlib
 import numpy as np
 import pandas as pd
 import yfinance as yf
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt</code></pre>
 
-2) Download Prices (5 Years)
-stocks = ['AAPL','MSFT','AMZN','GOOG','TSLA']
-endDate = pd.to_datetime('today'); startDate = endDate - pd.DateOffset(years=5)
+  <h4>2) Download Prices (5 Years)</h4>
+  <pre><code>stocks = ['AAPL','MSFT','AMZN','GOOG','TSLA']
+endDate = pd.to_datetime('today')
+startDate = endDate - pd.DateOffset(years=5)
 getData = yf.download(stocks, start=startDate, end=endDate)
-stockData = getData['Close'].dropna()
+stockData = getData['Close'].dropna()</code></pre>
 
-3) Returns, Means, Covariance
-returns = stockData.pct_change().dropna()
+  <h4>3) Returns, Means, Covariance</h4>
+  <pre><code>returns = stockData.pct_change().dropna()
 returnsAvg = returns.mean()
-covMatrix = returns.cov()
+covMatrix = returns.cov()</code></pre>
 
-4) Monte Carlo — Portfolio Paths
-• 1,000 simulations over ~252 trading days
-• Random weights per run (normalized to 1.0)
-• Daily returns ~ MVN(returnsAvg, covMatrix)
-• Track cumulative value of $10,000 initial portfolio
+  <h4>4) 🎲 Monte Carlo — Portfolio Paths</h4>
+  <ul>
+    <li>1,000 simulations over ~252 trading days</li>
+    <li>Random weights per run (normalized to 1.0)</li>
+    <li>Daily returns ~ MVN(returnsAvg, covMatrix)</li>
+    <li>Track cumulative value of $10,000 initial portfolio</li>
+  </ul>
 
-5) Risk Summary (95% Interval)
-• Mean final value across simulations
-• 5th percentile (worst 95%) and 95th percentile (best 95%)
+  <h4>5) 📉 Risk Summary (95% Interval)</h4>
+  <ul>
+    <li>Mean final value across simulations</li>
+    <li>5th percentile (worst 95%) and 95th percentile (best 95%)</li>
+  </ul>
 
-6) Efficient Frontier (Random Portfolios)
-• Sample 1,000 weight vectors
-• For each: annualized return & volatility from simulated daily returns
-• Compute Sharpe = return / volatility
-• Pick the max-Sharpe portfolio
+  <h4>6) 📈 Efficient Frontier (Random Portfolios)</h4>
+  <ul>
+    <li>Sample 1,000 weight vectors</li>
+    <li>Annualized return &amp; volatility from simulated daily returns</li>
+    <li>Sharpe = return / volatility; pick the max-Sharpe portfolio</li>
+  </ul>
 
-Sample Results (example run)
-• Optimal weights (approx): AAPL ~32%, MSFT ~17%, AMZN ~31%, GOOG ~10%, TSLA ~9%
-• Annualized Return: ~0.65%
-• Volatility: ~17.0%
-• Sharpe: ~0.04
+  <h4>Sample Results (example run)</h4>
+  <ul>
+    <li><strong>Weights (approx):</strong> AAPL ~32%, MSFT ~17%, AMZN ~31%, GOOG ~10%, TSLA ~9%</li>
+    <li><strong>Annualized Return:</strong> ~0.65%</li>
+    <li><strong>Volatility:</strong> ~17.0%</li>
+    <li><strong>Sharpe:</strong> ~0.04</li>
+  </ul>
 
-Key Takeaways
-• Monte Carlo shows ranges, not point predictions
-• 5th/95th percentiles frame downside/upside
-• Efficient frontier visualizes risk/return; Sharpe picks best risk-adjusted point
+  <h4>Key Takeaways</h4>
+  <ul>
+    <li>Monte Carlo shows ranges, not point predictions</li>
+    <li>5th/95th percentiles frame downside/upside</li>
+    <li>Efficient frontier visualizes risk/return; Sharpe picks best risk-adjusted point</li>
+  </ul>
 
-Links
-• GitHub: kamranss/monte-carlo-simulation
-• Medium: Monte Carlo Simulation for Stock Portfolio Optimization (full write-up)`,
+  <h4>🔗 Links</h4>
+  <ul>
+    <li>💻 GitHub: <a href="https://github.com/kamranss/monte-carlo-simulation" target="_blank" rel="noopener">kamranss/monte-carlo-simulation</a></li>
+    <li>📝 Medium: <a href="https://medium.com/@mr.kamran.suleyman/monte-carlo-simulation-for-stock-portfolio-optimization-using-python-1161bae76430" target="_blank" rel="noopener">full write-up</a></li>
+  </ul>
+`,
   tech: ["Python", "NumPy", "pandas", "matplotlib", "yfinance"],
   github: "https://github.com/kamranss/monte-carlo-simulation",
   medium: "https://medium.com/@mr.kamran.suleyman/monte-carlo-simulation-for-stock-portfolio-optimization-using-python-1161bae76430",
@@ -218,12 +275,34 @@ function openDrawer(projectId) {
   const p = projects.find(x => x.id === projectId);
   if (!p) return;
 
+  // elTitle.textContent = p.title;
+  // elShort.textContent = p.short;
+  // elYear.textContent  = p.year ?? "";
+  // elCats.textContent  = p.categories.join(", ");
+  // elTech.textContent  = p.tech.join(", ");
+  // elLong.textContent  = p.long;
+  // elImage.src = p.image;
+  // elImage.alt = p.title + " preview image";
+  // elGit.href  = p.github || "#";
+  // elDemo.href = p.demo  || "#";
+
+  // overlay.classList.add("open");
+  // overlay.setAttribute("aria-hidden", "false");
+  // drawer.classList.add("open");
+  // drawer.setAttribute("aria-hidden", "false");
+  // // trap focus to drawer for accessibility
+  // closeBtn.focus();
+
+  
   elTitle.textContent = p.title;
   elShort.textContent = p.short;
   elYear.textContent  = p.year ?? "";
   elCats.textContent  = p.categories.join(", ");
   elTech.textContent  = p.tech.join(", ");
-  elLong.textContent  = p.long;
+
+  // ⬇️ render the Medium-style HTML content
+  elLong.innerHTML    = p.long;
+
   elImage.src = p.image;
   elImage.alt = p.title + " preview image";
   elGit.href  = p.github || "#";
@@ -233,7 +312,6 @@ function openDrawer(projectId) {
   overlay.setAttribute("aria-hidden", "false");
   drawer.classList.add("open");
   drawer.setAttribute("aria-hidden", "false");
-  // trap focus to drawer for accessibility
   closeBtn.focus();
 }
 
