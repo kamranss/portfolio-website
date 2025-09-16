@@ -3,17 +3,83 @@
 // -- Project Data --
 // Edit this array to add or update your projects.
 const projects = [
+//   {
+//     id: "pmis",
+//     title: "Port Management Information System (PMIS)",
+//     categories: ["Backend", "Power BI", "Data"],
+//     year: 2024,
+//     image: "assets/backend.svg",
+//     short: "Event-driven .NET APIs + SQL with Power BI dashboards for cargo, vessel, and yard KPIs.",
+//     long: `Designed core services (C#, .NET, SQL Server) with event streaming (Kafka) and
+// Power BI dashboards for real-time operations. Owned backlog, data contracts, and
+// integration specs with Railway, Customs, and Finance systems.`,
+//     tech: [".NET", "C#", "SQL Server", "Kafka", "Power BI"],
+//     github: "#",
+//     demo: "#"
+//   },
   {
     id: "pmis",
-    title: "Port Management Information System (PMIS)",
-    categories: ["Backend", "Power BI", "Data"],
+    title: "Port Management Information System (PMIS) — Digitalization Initiative",
+    categories: ["Backend", "Product", "Power BI", "Data"],
     year: 2024,
-    image: "assets/backend.svg",
-    short: "Event-driven .NET APIs + SQL with Power BI dashboards for cargo, vessel, and yard KPIs.",
-    long: `Designed core services (C#, .NET, SQL Server) with event streaming (Kafka) and
-Power BI dashboards for real-time operations. Owned backlog, data contracts, and
-integration specs with Railway, Customs, and Finance systems.`,
-    tech: [".NET", "C#", "SQL Server", "Kafka", "Power BI"],
+    image: "assets/pmis-modules.png", // or keep your existing: "assets/backend.svg"
+    short: "Digital platform that centralizes and automates port operations at the Port of Baku: cargo, vessels, yard, and control room dashboards.",
+    long: `
+      <h4>🔍 Project Overview</h4>
+      <p>The Port Management Information System (PMIS) is a flagship <strong>digital transformation</strong> at the Port of Baku. 
+      It replaces paper workflows with a centralized platform that automates <em>cargo, vessel, and yard</em> operations. 
+      At its core is a <strong>Port Community System (PCS)</strong>—a single-window where data is entered once and reused across modules. 
+      PMIS integrates with <strong>Customs</strong>, <strong>ADY Railway</strong>, and partner ports, and powers <strong>real-time dashboards</strong> for decisions.</p>
+      <h4>🎯 Objectives</h4>
+      <ul>
+        <li>Digitize and automate operations to reduce delays and manual errors.</li>
+        <li>Provide real-time visibility of vessel, cargo, and yard activities via dashboards.</li>
+        <li>Enable integrations with external partners (Customs, ADY Railway, partner ports).</li>
+        <li>Support mobile access for field teams to remove redundant paperwork.</li>
+        <li>Align with the Smart Port vision; position Baku as a digital hub in the Caspian Corridor.</li>
+      </ul>
+      <h4>🌍 Goals & Strategic Alignment</h4>
+      <ul>
+        <li><strong>Operational Excellence:</strong> Faster vessel turnaround and cargo clearance.</li>
+        <li><strong>Data-Driven Decisions:</strong> KPIs, analytics, and predictive insights.</li>
+        <li><strong>Regional Growth:</strong> Scalable architecture for partner ports.</li>
+        <li><strong>Stakeholder Engagement:</strong> Collaboration across port, customs, railway, shipping lines.</li>
+      </ul>
+      <h4>🛠️ Tools & Methods</h4>
+      <ul>
+        <li><strong>Project Management:</strong> Hybrid—Agile (PCS, Mobile), Waterfall (Weighbridge), XP (critical modules).</li>
+        <li><strong>BA &amp; PO Deliverables:</strong> BRD, FRD, BPMN flows, personas, stakeholder maps, comms plans.</li>
+        <li><strong>Backend:</strong> .NET Core, SQL Server, <em>Kafka</em> for integrations.</li>
+        <li><strong>Frontend:</strong> React / Angular portals; SPA workaround where needed.</li>
+        <li><strong>Data &amp; Integrations:</strong> JSON/XML schemas, REST APIs, Control Tower connectivity.</li>
+        <li><strong>Visualization:</strong> Control Room dashboards, role-based KPIs (Power BI).</li>
+        <li><strong>Collaboration:</strong> JIRA (backlog/sprints), Confluence (docs), Lucidchart/Visio (BPMN).</li>
+      </ul>
+
+      <h4>📦 Covered Areas</h4>
+      <ul>
+        <li><strong>Project Management:</strong> SOW, WBS, risk plan, change requests.</li>
+        <li><strong>Product Ownership:</strong> Roadmap, backlog prioritization, vendor evaluations (DBA, Solvo, Albayrak).</li>
+        <li><strong>Business Analysis:</strong> FRDs, use cases, BPMN diagrams, data flows.</li>
+        <li><strong>Stakeholder Management:</strong> Stakeholder map, escalation templates, release comms.</li>
+        <li><strong>Technical Design:</strong> System architecture, message schemas, Control Tower integration.</li>
+      </ul>
+
+      <h4>🚀 Outcomes & Impact</h4>
+      <ul>
+        <li>~60% reduction in manual paperwork; faster customs clearance and yard planning.</li>
+        <li>Real-time Control Room dashboards improved operational awareness.</li>
+        <li>Mobile access enabled digital gate/yard operations.</li>
+        <li>Strategic workaround with ADY Control Tower ensured data continuity.</li>
+        <li>Positioned Port of Baku as a regional leader in port digitalization (scalable to Caspian partners).</li>
+      </ul>
+
+      <h4>🔗 Resources</h4>
+      <ul>
+        <li>📁 Source Materials (Docs/Slides): <a href="https://drive.google.com/drive/u/2/folders/1VCv7g1yrxa6mGcc23bcbvV-WTVxmDve0" target="_blank" rel="noopener">Google Drive folder</a></li>
+      </ul>
+    `,
+    tech: [".NET Core", "SQL Server", "Kafka", "React/Angular", "Power BI", "JIRA", "Confluence", "BPMN"],
     github: "#",
     demo: "#"
   },
@@ -399,3 +465,43 @@ document.addEventListener("keydown", (e) => {
 
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
+
+
+
+// THEME: OS preference first, then saved choice
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const saved = localStorage.getItem('theme');
+const theme = saved || (prefersDark ? 'dark' : 'light');
+document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+document.documentElement.classList.toggle('theme-light', theme === 'light');
+
+const btnTheme = document.getElementById('themeToggle');
+if (btnTheme) {
+  btnTheme.textContent = document.documentElement.classList.contains('theme-dark') ? '🌙' : '☀️';
+  btnTheme.addEventListener('click', () => {
+    const dark = !document.documentElement.classList.contains('theme-dark');
+    document.documentElement.classList.toggle('theme-dark', dark);
+    document.documentElement.classList.toggle('theme-light', !dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    btnTheme.textContent = dark ? '🌙' : '☀️';
+  });
+
+
+  
+}
+
+  const toggle = document.getElementById('skills-toggle');
+  const panel  = document.getElementById('more-skills');
+
+  toggle?.addEventListener('click', () => {
+    const isHidden = panel.hasAttribute('hidden');
+    if (isHidden) {
+      panel.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.textContent = 'Hide extra skills';
+    } else {
+      panel.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Show more skills';
+    }
+  });

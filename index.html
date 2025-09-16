@@ -19,6 +19,7 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <a href="certificate/certificates.html">Certificates</a>
+        <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌙</button>
       </nav>
     </div>
   </header>
@@ -40,13 +41,86 @@
             <a class="btn ghost" href="docs/Kamran_Suleyman_Resume.pdf" target="_blank" aria-disabled="true">Download Resume</a>
             <a class="btn" href="resume/index.html" target="_blank" rel="noopener">View Resume</a>
           </div>
+        <!-- Primary / always visible -->
           <ul class="chips" aria-label="Key skills">
-            <li>.NET · SQL Server</li>
-            <li>Python · Pandas</li>
-            <li>Power BI</li>
-            <li>JavaScript</li>
-            <li>APIs & Integrations</li>
+            <!-- Primary chips (edit these to taste) -->
+            <li class="chip chip-primary">.NET</li>
+            <li class="chip chip-primary">C#</li>
+            <li class="chip chip-primary">SQL / SQL Server</li>
+            <li class="chip chip-primary">Python</li>
+            <li class="chip chip-primary">Power BI</li>
+            <li class="chip chip-primary">React</li>
+            <li class="chip chip-primary">JavaScript</li>
+            <li class="chip chip-primary">APIs & Integrations</li>
+            <li class="chip chip-primary">Agile & Scrum</li>
+            <li class="chip chip-primary">Jira / Azure DevOps</li>
+            <li class="chip chip-primary">Docker</li>
           </ul>
+
+          <!-- Toggle button -->
+          <button id="skills-toggle"
+                  class="btn ghost chip-toggle"
+                  aria-expanded="false"
+                  aria-controls="more-skills">
+            Show more skills
+          </button>
+
+          <!-- Everything else (hidden by default) -->
+          <div id="more-skills" class="chips-collapsible" hidden>
+
+            <div class="chips-group">
+              <p class="chip-heading">Product / Business Analysis</p>
+              <ul class="chips">
+                <li class="chip">User Stories</li>
+                <li class="chip">Use Cases</li>
+                <li class="chip">Acceptance Criteria</li>
+                <li class="chip">API Design &amp; Integration</li>
+                <li class="chip">BPMN</li>
+                <li class="chip">UML</li>
+                <li class="chip">Sequence Diagrams</li>
+                <li class="chip">Process Flow Charts</li>
+                <li class="chip">Class Diagrams</li>
+                <li class="chip">Project Charter</li>
+                <li class="chip">Process Optimization</li>
+                <li class="chip">Stakeholder Management</li>
+                <li class="chip">Collaboration</li>
+                <li class="chip">Critical Thinking</li>
+                <li class="chip">EBM</li>
+                <li class="chip">Requirements Engineering</li>
+                <li class="chip">Product Lifecycle Management</li>
+                <li class="chip">Extreme Programming</li>
+              </ul>
+            </div>
+
+            <div class="chips-group">
+              <p class="chip-heading">Data &amp; Visualization</p>
+              <ul class="chips">
+                <li class="chip">Data Modeling</li>
+                <li class="chip">Data Governance (SDLC)</li>
+                <li class="chip">Tableau</li>
+                <li class="chip">UX</li>
+                <li class="chip">UAT</li>
+                <li class="chip">Google Colab</li>
+                <li class="chip">RapidMiner</li>
+                <li class="chip">SaaS</li>
+                <li class="chip">DPAD</li>
+              </ul>
+            </div>
+
+            <div class="chips-group">
+              <p class="chip-heading">Tools &amp; Platforms</p>
+              <ul class="chips">
+                <li class="chip">Confluence</li>
+                <li class="chip">Miro</li>
+                <li class="chip">Figma</li>
+                <li class="chip">GitHub</li>
+                <li class="chip">GitHub Actions</li>
+                <li class="chip">Lucidchart</li>
+                <li class="chip">n8n</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
         <div class="hero-card">
           <div class="bio-card">
@@ -58,6 +132,9 @@
             </dl>
           </div>
         </div>
+       
+</div>
+
       </div>
     </section>
 
@@ -156,7 +233,7 @@
         <p id="drawerLong" class="drawer-long"></p>
         <div class="drawer-links">
           <a id="drawerGit" class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
-          <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Live Demo</a>
+          <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Docs</a>
         </div>
       </div>
     </div>
