@@ -20,7 +20,7 @@ const projects = [
   {
     id: "pmis",
     title: "Port Management Information System (PMIS) — Digitalization Initiative",
-    categories: ["Backend", "Product", "Power BI", "Data"],
+    categories: ["Business Analysis", "PM", "Power BI", "Data", "Agile-Scrum", " Stakeholder Analysis", "Requirement Gathering", "User Stories", "Sequence Diagram", "BPMN", "API Integration", "Digital Transformation" ],
     year: 2024,
     image: "assets/pmis-modules.png", // or keep your existing: "assets/backend.svg"
     short: "Digital platform that centralizes and automates port operations at the Port of Baku: cargo, vessels, yard, and control room dashboards.",
@@ -86,7 +86,7 @@ const projects = [
    {
     id: "sales-sql-python",
     title: "Sales Management: SQL + Python",
-    categories: ["Jupyter", "Data"],
+    categories: ["Jupyter", "Data", "SQL", "python"],
     year: 2025,
     image: "assets/sales-management.png",
     short: "SQL schema + Python (pyodbc/pandas) analytics with charts and insights.",
@@ -307,7 +307,7 @@ zero-dependency JavaScript drawer/filters pattern.`,
   {
     id: "powerbi-cleaning",
     title: "Cleaning Sales Data with Power BI",
-    categories: ["Power BI", "Data"],
+    categories: ["Power BI", "Data", "Data Cleaning", "M-Script"],
     year: 2025,
     image: "assets/data cleaning.png",
     short: "Two approaches: Power Query UI (no-code) and a one-click M script for strict, reproducible cleaning.",
@@ -339,100 +339,103 @@ zero-dependency JavaScript drawer/filters pattern.`,
 
       <h4>⚡ Automated — One-Click M Script (Option B)</h4>
       <p>Paste into <em>Home → Transform data → Advanced Editor</em>. Change <code>SourcePath</code> to your file.</p>
-      <pre><code>// OPTION B: Full-row null removal + returns modeled
-  // - Trim text
-  // - Fix "Nomal"→"Normal"
-  // - Set data types
-  // - Remove date errors
-  // - Clean Ratings (>=99 → 9)
-  // - Flag returns (IsReturn) + normalize Quantity
-  // - Drop placeholder Unit prices (999/9999/99999)
-  // - Strict null sweep: drop row if ANY column is null
 
-  let
-      // SETTINGS
-      SourcePath = "D:/Code/Power BI/sales-data-cleaning/PriceCo_Sales_DataWrangling-2-1.xlsx",
+      <pre><code class="language-sql">
+    // OPTION B: Full-row null removal + returns modeled
+    // - Trim text
+    // - Fix "Nomal"→"Normal"
+    // - Set data types
+    // - Remove date errors
+    // - Clean Ratings (>=99 → 9)
+    // - Flag returns (IsReturn) + normalize Quantity
+    // - Drop placeholder Unit prices (999/9999/99999)
+    // - Strict null sweep: drop row if ANY column is null
 
-      // 1) LOAD & HEADERS
-      Source      = Excel.Workbook(File.Contents(SourcePath), null, true),
-      SampleSheet = Source{[Item="Sample", Kind="Sheet"]}[Data],
-      Promoted    = Table.PromoteHeaders(SampleSheet, [PromoteAllScalars = true]),
+    let
+        // SETTINGS
+        SourcePath = "D:/Code/Power BI/sales-data-cleaning/PriceCo_Sales_DataWrangling-2-1.xlsx",
 
-      // 2) TRIM TEXT
-      Trimmed =
-          Table.TransformColumns(
-              Promoted,
-              {
-                  {"Invoice ID",   Text.Trim, type text},
-                  {"City",         Text.Trim, type text},
-                  {"Membership",   Text.Trim, type text},
-                  {"Gender",       Text.Trim, type text},
-                  {"Product line", Text.Trim, type text},
-                  {"Payment",      Text.Trim, type text}
-              }
-          ),
+        // 1) LOAD & HEADERS
+        Source      = Excel.Workbook(File.Contents(SourcePath), null, true),
+        SampleSheet = Source{[Item="Sample", Kind="Sheet"]}[Data],
+        Promoted    = Table.PromoteHeaders(SampleSheet, [PromoteAllScalars = true]),
 
-      // 3) TYPES + MEMBERSHIP FIX
-      Typed =
-          Table.TransformColumnTypes(
-              Trimmed,
-              {
-                  {"Unit price_mxp", type number},
-                  {"Quantity",       Int64.Type},
-                  {"Tax 15%",        type number},
-                  {"Total_mxp",      type number},
-                  {"Date",           type any},
-                  {"Rating",         type number}
-              }
-          ),
-      MembershipFixed =
-          Table.ReplaceValue(Typed, "Nomal", "Normal", Replacer.ReplaceText, {"Membership"}),
+        // 2) TRIM TEXT
+        Trimmed =
+            Table.TransformColumns(
+                Promoted,
+                {
+                    {"Invoice ID",   Text.Trim, type text},
+                    {"City",         Text.Trim, type text},
+                    {"Membership",   Text.Trim, type text},
+                    {"Gender",       Text.Trim, type text},
+                    {"Product line", Text.Trim, type text},
+                    {"Payment",      Text.Trim, type text}
+                }
+            ),
 
-      // 4) DATE CAST + REMOVE DATE ERRORS
-      DateTyped         = Table.TransformColumnTypes(MembershipFixed, {{"Date", type date}}),
-      DateErrorsRemoved = Table.RemoveRowsWithErrors(DateTyped, {"Date"}),
+        // 3) TYPES + MEMBERSHIP FIX
+        Typed =
+            Table.TransformColumnTypes(
+                Trimmed,
+                {
+                    {"Unit price_mxp", type number},
+                    {"Quantity",       Int64.Type},
+                    {"Tax 15%",        type number},
+                    {"Total_mxp",      type number},
+                    {"Date",           type any},
+                    {"Rating",         type number}
+                }
+            ),
+        MembershipFixed =
+            Table.ReplaceValue(Typed, "Nomal", "Normal", Replacer.ReplaceText, {"Membership"}),
 
-      // 5) CLEAN RATINGS (>=99 → 9; keep nulls)
-      RatingClean =
-          Table.TransformColumns(
-              DateErrorsRemoved,
-              {{"Rating", each if _ = null then null else if _ >= 99 then 9 else _, type number}}
-          ),
+        // 4) DATE CAST + REMOVE DATE ERRORS
+        DateTyped         = Table.TransformColumnTypes(MembershipFixed, {{"Date", type date}}),
+        DateErrorsRemoved = Table.RemoveRowsWithErrors(DateTyped, {"Date"}),
 
-      // 6) DROP PLACEHOLDER UNIT PRICES
-      PriceClean =
-          Table.SelectRows(
-              RatingClean,
-              each not List.Contains({999, 9999, 99999}, [Unit price_mxp])
-          ),
+        // 5) CLEAN RATINGS (>=99 → 9; keep nulls)
+        RatingClean =
+            Table.TransformColumns(
+                DateErrorsRemoved,
+                {{"Rating", each if _ = null then null else if _ >= 99 then 9 else _, type number}}
+            ),
 
-      // 7) FLAG RETURNS + NORMALIZE QUANTITY
-      AddedReturnFlag =
-          Table.AddColumn(PriceClean, "IsReturn", each [Quantity] <> null and [Quantity] < 0, type logical),
-      QuantityPositive =
-          Table.TransformColumns(
-              AddedReturnFlag,
-              {{"Quantity", each if _ = null then null else if _ < 0 then Number.Abs(_) else _, Int64.Type}}
-          ),
+        // 6) DROP PLACEHOLDER UNIT PRICES
+        PriceClean =
+            Table.SelectRows(
+                RatingClean,
+                each not List.Contains({999, 9999, 99999}, [Unit price_mxp])
+            ),
 
-      // (Optional) flip totals/tax for returns:
-      // FlippedTotals =
-      //     Table.TransformColumns(
-      //         QuantityPositive,
-      //         {
-      //             {"Total_mxp", each if [IsReturn] then -_ else _, type number},
-      //             {"Tax 15%",   each if [IsReturn] then -_ else _, type number}
-      //         }
-      //     ),
+        // 7) FLAG RETURNS + NORMALIZE QUANTITY
+        AddedReturnFlag =
+            Table.AddColumn(PriceClean, "IsReturn", each [Quantity] <> null and [Quantity] < 0, type logical),
+        QuantityPositive =
+            Table.TransformColumns(
+                AddedReturnFlag,
+                {{"Quantity", each if _ = null then null else if _ < 0 then Number.Abs(_) else _, Int64.Type}}
+            ),
 
-      // 8) STRICT NULL SWEEP (drop if ANY column is null)
-      NoNulls_AllColumns =
-          Table.SelectRows(
-              QuantityPositive,
-              each List.NonNullCount(Record.ToList(_)) = Table.ColumnCount(QuantityPositive)
-          )
-  in
-      NoNulls_AllColumns</code></pre>
+        // (Optional) flip totals/tax for returns:
+        // FlippedTotals =
+        //     Table.TransformColumns(
+        //         QuantityPositive,
+        //         {
+        //             {"Total_mxp", each if [IsReturn] then -_ else _, type number},
+        //             {"Tax 15%",   each if [IsReturn] then -_ else _, type number}
+        //         }
+        //     ),
+
+        // 8) STRICT NULL SWEEP (drop if ANY column is null)
+        NoNulls_AllColumns =
+            Table.SelectRows(
+                QuantityPositive,
+                each List.NonNullCount(Record.ToList(_)) = Table.ColumnCount(QuantityPositive)
+            )
+    in
+        NoNulls_AllColumns
+      </code></pre>
 
       <h4>📊 Before vs After (Ratings)</h4>
       <table>
