@@ -20,7 +20,7 @@ const projects = [
   {
     id: "pmis",
     title: "Port Management Information System (PMIS) — Digitalization Initiative",
-    categories: ["Business Analysis", "PM", "Power BI", "Data", "Agile-Scrum", " Stakeholder Analysis", "Requirement Gathering", "User Stories", "Sequence Diagram", "BPMN", "API Integration", "Digital Transformation" ],
+    categories: ["Business Analysis", "PM", "Power BI", "Agile-Scrum", " Stakeholder Analysis", "Requirement Gathering", "User Stories", "Sequence Diagram", "BPMN", "API Integration" ],
     year: 2024,
     image: "assets/pmis-modules.png", // or keep your existing: "assets/backend.svg"
     short: "Digital platform that centralizes and automates port operations at the Port of Baku: cargo, vessels, yard, and control room dashboards.",
@@ -221,93 +221,7 @@ const projects = [
     medium: "https://medium.com/@mr.kamran.suleyman/monte-carlo-simulation-for-stock-portfolio-optimization-using-python-1161bae76430",
     demo: "https://github.com/kamranss/monte-carlo-simulation/blob/main/Monte%20Carlo%20simulation.ipynb"
   },
-  {
-    id: "powerbi-priceco",
-    title: "PriceCo Retail Dashboard (Power BI)",
-    categories: ["Power BI", "Data"],
-    year: 2025,
-    image: "assets/powerbi.svg",
-    short: "Interactive BI with DAX measures and report pages for tickets, cities, and product lines.",
-    long: `Modeled data, authored DAX for KPIs, and built drill-through visuals to uncover
-city and membership drivers of average ticket size and margin.`,
-    tech: ["Power BI", "DAX"],
-    github: "#",
-    docs:   "https://drive.google.com/...", // optional
-    linkedin: "https://www.linkedin.com/in/...", // optional
-    medium: "https://medium.com/@...", // optional
-    demo:   "#" // optional live link
-  },
-  {
-    id: "frontend-portfolio",
-    title: "Frontend Portfolio UI",
-    categories: ["Frontend"],
-    year: 2025,
-    image: "assets/Programming.jpg",
-    short: "A clean, responsive UI kit in vanilla HTML/CSS/JS—cards, filters, and modal drawer.",
-    long: `This very site! Focus on accessible, semantic HTML; CSS variables and grid; and a
-zero-dependency JavaScript drawer/filters pattern.`,
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    demo: "#"
-  },
-  {
-  id: "sales-ticket-insights",
-  title: "Visual Insights on Average Sales Ticket",
-  categories: ["Power BI", "Data"],
-  year: 2025,
-  image: "assets/productline-impact.png", // or swap for a PNG screenshot you have
-  short: "City, membership, and product-line analysis to raise the average sales ticket.",
-  long: `
-    <h4>🎯 Goal</h4>
-    <p>Design visuals that reveal <strong>what drives the average sales ticket</strong> so decision-makers can raise per-purchase value.</p>
-
-    <h4>👥 Audience</h4>
-    <ul>
-      <li><strong>Executives</strong> – high-level direction</li>
-      <li><strong>Store Managers</strong> – operational adjustments</li>
-      <li><strong>Ops Teams</strong> – execute on trends</li>
-      <li><strong>Analysts/Engineers</strong> – convert findings into data products</li>
-    </ul>
-
-    <h4>📊 Research Questions</h4>
-    <ul>
-      <li>Does <strong>city</strong> impact the average sales ticket?</li>
-      <li>Does <strong>membership type</strong> impact the average sales ticket?</li>
-      <li>Does <strong>product line</strong> impact the average sales ticket?</li>
-    </ul>
-
-    <h4>🔍 Visual Analysis</h4>
-    <h5>📍 Visual 1 — City of Purchase</h5>
-    <p><em>Guadalajara</em> shows the highest average ticket (~5.7K) vs. Monterrey (~5.4K) and Mexico DF (~5.3K). 
-    Consider replicating Guadalajara’s <strong>promotions</strong>, <strong>assortment</strong>, or <strong>customer mix</strong> in other cities.</p>
-
-    <h5>🏷️ Visual 2 — Membership Type</h5>
-    <p><strong>Plus members</strong> spend more per transaction (~5.56K) than Normal (~5.39K). 
-    Run <strong>upgrade campaigns</strong> and perks that nudge Normal → Plus.</p>
-
-    <h5>📦 Visual 3 — Product Line</h5>
-    <p><em>Home & Lifestyle</em> (~5.7K) and <em>Sports & Travel</em> (~5.6K) lead; <em>Fashion Accessories</em> (~5.2K) lags. 
-    <strong>Promote</strong> leaders and <strong>bundle</strong> lower performers with premium items.</p>
-
-    <h4>📑 Conclusions</h4>
-    <ul>
-      <li><strong>City:</strong> Use Guadalajara as a playbook for other locations.</li>
-      <li><strong>Membership:</strong> Upgrades to Plus directly lift ticket size.</li>
-      <li><strong>Product Line:</strong> Prioritize strong categories; bundle weaker ones.</li>
-    </ul>
-    <p>Together these suggest a practical roadmap: replicate best-performing city tactics, promote Plus memberships, and optimize assortment to grow average ticket.</p>
-
-    <h4>🔗 Resources</h4>
-    <ul>
-      <li>💻 GitHub: <a href="https://github.com/kamranss/sales-ticket-insights" target="_blank" rel="noopener">kamranss/sales-ticket-insights</a></li>
-      <li>📝 Medium: <a href="https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8" target="_blank" rel="noopener">article</a></li>
-    </ul>
-  `,
-  tech: ["Power BI", "DAX", "Python", "Pandas", "Matplotlib"],
-  github: "https://github.com/kamranss/sales-ticket-insights",
-  demo: "https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8"
-},
-  {
+    {
     id: "powerbi-cleaning",
     title: "Cleaning Sales Data with Power BI",
     categories: ["Power BI", "Data", "Data Cleaning", "M-Script"],
@@ -464,7 +378,93 @@ zero-dependency JavaScript drawer/filters pattern.`,
     github: "https://github.com/kamranss/sales-data-cleaning",
     demo: "https://medium.com/@mr.kamran.suleyman/cleaning-sales-data-with-power-bi-manual-ui-one-click-script-a7120505eb77"
   },
+  {
+  id: "sales-ticket-insights",
+  title: "Visual Insights on Average Sales Ticket",
+  categories: ["Power BI", "Data"],
+  year: 2025,
+  image: "assets/productline-impact.png", // or swap for a PNG screenshot you have
+  short: "City, membership, and product-line analysis to raise the average sales ticket.",
+  long: `
+    <h4>🎯 Goal</h4>
+    <p>Design visuals that reveal <strong>what drives the average sales ticket</strong> so decision-makers can raise per-purchase value.</p>
 
+    <h4>👥 Audience</h4>
+    <ul>
+      <li><strong>Executives</strong> – high-level direction</li>
+      <li><strong>Store Managers</strong> – operational adjustments</li>
+      <li><strong>Ops Teams</strong> – execute on trends</li>
+      <li><strong>Analysts/Engineers</strong> – convert findings into data products</li>
+    </ul>
+
+    <h4>📊 Research Questions</h4>
+    <ul>
+      <li>Does <strong>city</strong> impact the average sales ticket?</li>
+      <li>Does <strong>membership type</strong> impact the average sales ticket?</li>
+      <li>Does <strong>product line</strong> impact the average sales ticket?</li>
+    </ul>
+
+    <h4>🔍 Visual Analysis</h4>
+    <h5>📍 Visual 1 — City of Purchase</h5>
+    <p><em>Guadalajara</em> shows the highest average ticket (~5.7K) vs. Monterrey (~5.4K) and Mexico DF (~5.3K). 
+    Consider replicating Guadalajara’s <strong>promotions</strong>, <strong>assortment</strong>, or <strong>customer mix</strong> in other cities.</p>
+
+    <h5>🏷️ Visual 2 — Membership Type</h5>
+    <p><strong>Plus members</strong> spend more per transaction (~5.56K) than Normal (~5.39K). 
+    Run <strong>upgrade campaigns</strong> and perks that nudge Normal → Plus.</p>
+
+    <h5>📦 Visual 3 — Product Line</h5>
+    <p><em>Home & Lifestyle</em> (~5.7K) and <em>Sports & Travel</em> (~5.6K) lead; <em>Fashion Accessories</em> (~5.2K) lags. 
+    <strong>Promote</strong> leaders and <strong>bundle</strong> lower performers with premium items.</p>
+
+    <h4>📑 Conclusions</h4>
+    <ul>
+      <li><strong>City:</strong> Use Guadalajara as a playbook for other locations.</li>
+      <li><strong>Membership:</strong> Upgrades to Plus directly lift ticket size.</li>
+      <li><strong>Product Line:</strong> Prioritize strong categories; bundle weaker ones.</li>
+    </ul>
+    <p>Together these suggest a practical roadmap: replicate best-performing city tactics, promote Plus memberships, and optimize assortment to grow average ticket.</p>
+
+    <h4>🔗 Resources</h4>
+    <ul>
+      <li>💻 GitHub: <a href="https://github.com/kamranss/sales-ticket-insights" target="_blank" rel="noopener">kamranss/sales-ticket-insights</a></li>
+      <li>📝 Medium: <a href="https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8" target="_blank" rel="noopener">article</a></li>
+    </ul>
+  `,
+  tech: ["Power BI", "DAX", "Python", "Pandas", "Matplotlib"],
+  github: "https://github.com/kamranss/sales-ticket-insights",
+  demo: "https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8"
+},
+  {
+    id: "powerbi-priceco",
+    title: "PriceCo Retail Dashboard (Power BI)",
+    categories: ["Power BI", "Data"],
+    year: 2025,
+    image: "assets/powerbi.svg",
+    short: "Interactive BI with DAX measures and report pages for tickets, cities, and product lines.",
+    long: `Modeled data, authored DAX for KPIs, and built drill-through visuals to uncover
+city and membership drivers of average ticket size and margin.`,
+    tech: ["Power BI", "DAX"],
+    github: "#",
+    docs:   "https://drive.google.com/...", // optional
+    linkedin: "https://www.linkedin.com/in/...", // optional
+    medium: "https://medium.com/@...", // optional
+    demo:   "#" // optional live link
+  },
+  {
+    id: "frontend-portfolio",
+    title: "Frontend Portfolio UI",
+    categories: ["Frontend"],
+    year: 2025,
+    image: "assets/Programming.jpg",
+    short: "A clean, responsive UI kit in vanilla HTML/CSS/JS—cards, filters, and modal drawer.",
+    long: `This very site! Focus on accessible, semantic HTML; CSS variables and grid; and a
+zero-dependency JavaScript drawer/filters pattern.`,
+    tech: ["HTML", "CSS", "JavaScript"],
+    github: "#",
+    demo: "#"
+  },
+  
   {
     id: "devops-ci",
     title: "CI/CD Pipeline Showcase",
@@ -527,202 +527,6 @@ filterButtons.forEach(btn => {
     renderProjects(filterProjects(activeFilter));
   });
 });
-
-
-
-
-// const overlay = document.getElementById("overlay");
-// const drawer  = document.getElementById("detailDrawer");
-// const closeBtn = drawer.querySelector(".drawer-close");
-
-// const elTitle = document.getElementById("drawerTitle");
-// const elShort = document.getElementById("drawerShort");
-// const elYear  = document.getElementById("drawerYear");
-// const elCats  = document.getElementById("drawerCats");
-// const elTech  = document.getElementById("drawerTech");
-// const elLong  = document.getElementById("drawerLong");
-// const elImage = document.getElementById("drawerImage");
-
-
-// const elGit      = document.getElementById("drawerGit");
-// const elDocs     = document.getElementById("drawerDocs");
-// const elLinkedIn = document.getElementById("drawerLinkedIn");
-// const elMedium   = document.getElementById("drawerMedium");
-// const elDemo     = document.getElementById("drawerDemo");
-
-
-// ------- Drawer elements (already present in your file) -------
-
-
-
-
-
-
-
-// const overlay = document.getElementById("overlay");
-// const drawer  = document.getElementById("detailDrawer");
-// const closeBtn = drawer.querySelector(".drawer-close");
-
-// const elTitle = document.getElementById("drawerTitle");
-// const elShort = document.getElementById("drawerShort");
-// const elYear  = document.getElementById("drawerYear");
-
-
-// const elCats  = document.getElementById("drawerCats");
-// const elTech  = document.getElementById("drawerTech");
-
-// const elLong  = document.getElementById("drawerLong");
-// const elImage = document.getElementById("drawerImage");
-
-
-// const elGit      = document.getElementById("drawerGit");
-// const elDocs     = document.getElementById("drawerDocs");
-// const elDemo     = document.getElementById("drawerDemo");
-// const elLinkedIn = document.getElementById("drawerLinkedIn");
-// const elMedium   = document.getElementById("drawerMedium");
-
-
- // Helper: set or hide a link
-  // function setLink(el, url) {
-  //   if (!el) return;
-  //   if (url && url !== "#") {
-  //     el.href = url;
-  //     el.style.display = "";
-  //   } else {
-  //     el.removeAttribute("href");
-  //     el.style.display = "none";
-  //   }
-  // }
-
-
-
-  // Helpers
-  //   function setLink(el, url){
-  //     if (!el) return;
-  //     if (url && url !== "#"){ el.href = url; el.style.display = ""; }
-  //     else { el.removeAttribute("href"); el.style.display = "none"; }
-  //   }
-  //   function renderChips(list, el){
-  //     if (!el) return;
-  //     const items = (list || []).map(v => `<li>${v}</li>`).join("");
-  //     el.innerHTML = items;
-  //   }
-
-
-
-  // const linksRow = document.getElementById("drawerLinksRow");
-
-// function openDrawer(projectId) {
-//   const p = projects.find(x => x.id === projectId);
-//   if (!p) return;
-
-
-//   const visibleButtons = [elGit, elDocs, elLinkedIn, elMedium, elDemo]
-//   .some(el => el && el.style.display !== "none");
-
-//   if (linksRow) {
-//     linksRow.style.display = visibleButtons ? "" : "none";
-//   }
-
-
-//   elTitle.textContent = p.title;
-//   elShort.textContent = p.short;
-//   elYear.textContent  = p.year ?? "";
-//   elCats.textContent  = (p.categories || []).join(", ");
-//   elTech.textContent  = (p.tech || []).join(", ");
-
-//   elLong.innerHTML = p.long || "";
-
-
-//   elImage.src = p.image || "";
-//   elImage.alt = (p.title || "") + " preview image";
-
- 
-//   setLink(elGit,      p.github);
-//   setLink(elDocs,     p.docs);
-//   setLink(elLinkedIn, p.linkedin);
-//   setLink(elMedium,   p.medium);
-//   setLink(elDemo,     p.demo);
-
-//   // Open drawer
-//   overlay.classList.add("open");
-//   overlay.setAttribute("aria-hidden", "false");
-//   drawer.classList.add("open");
-//   drawer.setAttribute("aria-hidden", "false");
-//   closeBtn.focus();
-// }
-// Open dialog
-
-
-
-
-// function openDrawer(projectId){
-//   const p = projects.find(x => x.id === projectId);
-//   if (!p) return;
-
-
-//   elTitle.textContent = p.title || "";
-//   elYear.textContent  = p.year ? String(p.year) : "";
-//   renderChips(p.categories, elCats);
-//   renderChips(p.tech, elTech);
-
-
-//   elShort.textContent = p.short || "";
-//   elLong.innerHTML    = p.long || "";
-//   elImage.src = p.image || "";
-//   elImage.alt = (p.title || "") + " preview image";
-
-
-//   setLink(elGit,      p.github);
-//   setLink(elDocs,     p.docs);
-//   setLink(elDemo,     p.demo);
-//   setLink(elLinkedIn, p.linkedin);
-//   setLink(elMedium,   p.medium);
-
-
-//   overlay.classList.add("open");
-//   overlay.setAttribute("aria-hidden", "false");
-//   drawer.classList.add("open");
-//   drawer.setAttribute("aria-hidden", "false");
-//   closeBtn.focus();
-// }
-
-
-
-
-
-
-
-
-// function closeDrawer() {
-//   overlay.classList.remove("open");
-//   overlay.setAttribute("aria-hidden", "true");
-//   drawer.classList.remove("open");
-//   drawer.setAttribute("aria-hidden", "true");
-// }
-
-// document.addEventListener("click", (e) => {
-//   const detailBtn = e.target.closest(".open-details");
-//   const card = e.target.closest(".card");
-//   if (detailBtn) {
-//     openDrawer(detailBtn.dataset.id);
-//   } else if (card && e.target.tagName !== "A" && !e.target.closest(".open-details")) {
-
-//     openDrawer(card.dataset.id);
-//   }
-// });
-
-// overlay.addEventListener("click", closeDrawer);
-// closeBtn.addEventListener("click", closeDrawer);
-// document.addEventListener("keydown", (e) => {
-//   if (e.key === "Escape") closeDrawer();
-// });
-
-
-
-
-
-
 
 
 
