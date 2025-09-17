@@ -14,6 +14,19 @@
 
   --radius:16px;
   --shadow:0 10px 30px rgba(0,0,0,.25);
+
+  --blurb-bg: #ffffff;
+  --blurb-border: var(--border);
+  --blurb-fg: #0f172a;            /* dark ink on light bg */
+  --blurb-strong: var(--accent);  /* teal accent */
+}
+
+/* left accent bar */
+.experience-blurb::before{
+  content:"";
+  position:absolute; inset:0 auto 0 0;
+  width:4px; border-top-left-radius:12px; border-bottom-left-radius:12px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 
 /* Light theme ONLY when .theme-light is on <html> */
@@ -39,6 +52,8 @@ html.theme-dark{
   --border:rgba(255,255,255,0.10);
   --chip:rgba(255,255,255,0.06);
 }
+
+
 
 
 *{box-sizing:border-box}
@@ -163,17 +178,9 @@ body { background:var(--bg); color:var(--ink); }
 }
 
 /* Title row with tiny accent dot */
-.experience-blurb__text {
-  margin:0;
-  color:#ffffff;                    /* pure white text */
-  line-height:1.5;
-  font-size:14.5px;
-}
 
-.experience-blurb__text strong {
-  color: var(--accent);             /* teal highlight */
-  font-weight:600;
-}
+
+
 .experience-blurb__dot{
   width:10px; height:10px; border-radius:50%;
   background: var(--accent);
@@ -203,6 +210,45 @@ s
   border-radius:999px;
   padding:6px 10px;
   font-size:12px;
+}
+
+
+#resume .experience-blurb{
+  margin-top:16px;
+  padding:16px 18px;
+  border-radius:12px;
+  background: var(--blurb-bg);
+  border:1px solid var(--blurb-border);
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+#resume .experience-blurb__title{
+  margin:0 0 10px 0;
+  font-size:15px;
+  font-weight:600;
+  color: var(--blurb-fg);
+  letter-spacing:.5px;
+}
+#resume .experience-blurb__text{
+  margin:0;
+  color: var(--blurb-fg);
+  line-height:1.5;
+  font-size:14.5px;
+}
+#resume .experience-blurb__text strong{
+  color: var(--blurb-strong);
+  font-weight:600;
+}
+
+html[data-theme="light"]{
+  --blurb-bg: #ffffff;
+  --blurb-border: var(--border);
+  --blurb-fg: #0f172a;
+}
+html[data-theme="dark"]{
+  --blurb-bg: var(--card-bg);
+  --blurb-border: var(--card-border);
+  --blurb-fg: #ffffff;
 }
 
 /* Responsive tweak */
