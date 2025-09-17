@@ -635,21 +635,21 @@ document.getElementById("year").textContent = new Date().getFullYear();
   
 // }
 
-//   const toggle = document.getElementById('skills-toggle');
-//   const panel  = document.getElementById('more-skills');
+  const toggle = document.getElementById('skills-toggle');
+  const panel  = document.getElementById('more-skills');
 
-//   toggle?.addEventListener('click', () => {
-//     const isHidden = panel.hasAttribute('hidden');
-//     if (isHidden) {
-//       panel.removeAttribute('hidden');
-//       toggle.setAttribute('aria-expanded', 'true');
-//       toggle.textContent = 'Hide extra skills';
-//     } else {
-//       panel.setAttribute('hidden', '');
-//       toggle.setAttribute('aria-expanded', 'false');
-//       toggle.textContent = 'Show more skills';
-//     }
-//   });
+  toggle?.addEventListener('click', () => {
+    const isHidden = panel.hasAttribute('hidden');
+    if (isHidden) {
+      panel.removeAttribute('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.textContent = 'Hide extra skills';
+    } else {
+      panel.setAttribute('hidden', '');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = 'Show more skills';
+    }
+  });
 
 
 
