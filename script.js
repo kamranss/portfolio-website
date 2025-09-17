@@ -468,40 +468,141 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 
 
-// THEME: OS preference first, then saved choice
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const saved = localStorage.getItem('theme');
-const theme = saved || (prefersDark ? 'dark' : 'light');
-document.documentElement.classList.toggle('theme-dark', theme === 'dark');
-document.documentElement.classList.toggle('theme-light', theme === 'light');
+// // THEME: OS preference first, then saved choice
+// const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+// const saved = localStorage.getItem('theme');
+// const theme = saved || (prefersDark ? 'dark' : 'light');
+// document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+// document.documentElement.classList.toggle('theme-light', theme === 'light');
 
-const btnTheme = document.getElementById('themeToggle');
-if (btnTheme) {
-  btnTheme.textContent = document.documentElement.classList.contains('theme-dark') ? '🌙' : '☀️';
-  btnTheme.addEventListener('click', () => {
-    const dark = !document.documentElement.classList.contains('theme-dark');
-    document.documentElement.classList.toggle('theme-dark', dark);
-    document.documentElement.classList.toggle('theme-light', !dark);
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    btnTheme.textContent = dark ? '🌙' : '☀️';
-  });
+// const btnTheme = document.getElementById('themeToggle');
+// if (btnTheme) {
+//   btnTheme.textContent = document.documentElement.classList.contains('theme-dark') ? '🌙' : '☀️';
+//   btnTheme.addEventListener('click', () => {
+//     const dark = !document.documentElement.classList.contains('theme-dark');
+//     document.documentElement.classList.toggle('theme-dark', dark);
+//     document.documentElement.classList.toggle('theme-light', !dark);
+//     localStorage.setItem('theme', dark ? 'dark' : 'light');
+//     btnTheme.textContent = dark ? '🌙' : '☀️';
+//   });
 
 
   
-}
+// }
 
-  const toggle = document.getElementById('skills-toggle');
-  const panel  = document.getElementById('more-skills');
+//   const toggle = document.getElementById('skills-toggle');
+//   const panel  = document.getElementById('more-skills');
 
-  toggle?.addEventListener('click', () => {
-    const isHidden = panel.hasAttribute('hidden');
-    if (isHidden) {
-      panel.removeAttribute('hidden');
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.textContent = 'Hide extra skills';
-    } else {
-      panel.setAttribute('hidden', '');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.textContent = 'Show more skills';
+//   toggle?.addEventListener('click', () => {
+//     const isHidden = panel.hasAttribute('hidden');
+//     if (isHidden) {
+//       panel.removeAttribute('hidden');
+//       toggle.setAttribute('aria-expanded', 'true');
+//       toggle.textContent = 'Hide extra skills';
+//     } else {
+//       panel.setAttribute('hidden', '');
+//       toggle.setAttribute('aria-expanded', 'false');
+//       toggle.textContent = 'Show more skills';
+//     }
+//   });
+
+
+
+
+
+
+
+
+// delete it
+// ===== THEME (works across all pages) =====
+// (function () {
+//   const KEY = 'theme'; // 'dark' | 'light'
+//   const html = document.documentElement;
+
+//   function setTheme(t) {
+//     html.classList.toggle('theme-dark', t === 'dark');
+//     html.classList.toggle('theme-light', t === 'light');
+//     localStorage.setItem(KEY, t);
+//     const btn = document.getElementById('themeToggle');
+//     if (btn) btn.textContent = (t === 'dark') ? '🌙' : '☀️';
+//   }
+
+//   function getInitial() {
+//     const saved = localStorage.getItem(KEY);
+//     if (saved === 'dark' || saved === 'light') return saved;
+//     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+//     return prefersDark ? 'dark' : 'light';
+//   }
+
+//   // Initialize after DOM is ready
+//   const init = () => setTheme(getInitial());
+//   if (document.readyState === 'loading') {
+//     document.addEventListener('DOMContentLoaded', init);
+//   } else {
+//     init();
+//   }
+
+//   // Click handler (delegated so it works on every page)
+//   document.addEventListener('click', (e) => {
+//     const btn = e.target.closest('#themeToggle');
+//     if (!btn) return;
+//     e.preventDefault();
+//     const current = html.classList.contains('theme-dark') ? 'dark' : 'light';
+//     setTheme(current === 'dark' ? 'light' : 'dark');
+//   });
+
+//   // Keep tabs/pages in sync
+//   window.addEventListener('storage', (e) => {
+//     if (e.key === KEY && (e.newValue === 'dark' || e.newValue === 'light')) {
+//       setTheme(e.newValue);
+//     }
+//   });
+// })();
+
+
+/* =========================
+   THEME (works on every page)
+   ========================= */
+(function () {
+  const KEY = 'theme'; // 'dark' | 'light'
+  const html = document.documentElement;
+
+  function setTheme(t) {
+    html.classList.toggle('theme-dark', t === 'dark');
+    html.classList.toggle('theme-light', t === 'light');
+    localStorage.setItem(KEY, t);
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.textContent = (t === 'dark') ? '🌙' : '☀️';
+  }
+
+  function getInitial() {
+    const saved = localStorage.getItem(KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
+  }
+
+  // Initialize after DOM ready
+  const init = () => setTheme(getInitial());
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Delegated click handler (works even if button is added later)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('#themeToggle');
+    if (!btn) return;
+    e.preventDefault();
+    const current = html.classList.contains('theme-dark') ? 'dark' : 'light';
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Cross-tab/page sync
+  window.addEventListener('storage', (e) => {
+    if (e.key === KEY && (e.newValue === 'dark' || e.newValue === 'light')) {
+      setTheme(e.newValue);
     }
   });
+})();

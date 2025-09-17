@@ -2,26 +2,7 @@
    Portfolio Styles (CSS-only, responsive)
    ============== */
 /* 
-:root{
-  --bg: #05297083;
-  --panel: #0f1830;
-  --ink: #e6ebf5;
-  --muted: #9aa3b2;
-  --brand: #60a5fa;       
-  --accent: #22d3ee;      
-  --chip: rgba(255,255,255,0.06);
-  --card: #101a34;
-  --border: rgba(255,255,255,0.08);
-  --shadow: 0 8px 30px rgba(0,0,0,0.35);
-  
 
-} */
- /* :root{
-  --bg:#0b1220; --panel:#0f1830; --ink:#e6ebf5; --muted:#9aa3b2;
-  --brand:#60a5fa; --accent:#22d3ee; --border:rgba(255,255,255,0.08);
-  --chip:rgba(255,255,255,0.06); --shadow:0 8px 30px rgba(0,0,0,0.35);
-  --brand:#3b82f6; --accent:#22d3ee; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.25);
-} */
 :root{
   --bg:#0b1220;
   --panel:#0f1830;
@@ -39,22 +20,67 @@
 
 
 /* Light theme */
-:root, .theme-light {
+/* :root, .theme-light {
   --bg:#f7f8fc;
   --ink:#0f172a;
   --muted:#5b6473;
   --card:#ffffff;
   --border:#e6e8ef;
-}
+} */
 
 /* Dark theme */
-.theme-dark {
+/* .theme-dark {
   --bg:#0b1422;
   --ink:#e6ebf5;
   --muted:#a3adc2;
   --card:#0f1a2b;
   --border:#1e2a3f;
+} */
+
+
+  /* ===== Theme tokens ===== */
+/* Default = dark */
+:root{
+  --bg:#0b1220;
+  --panel:#0f1830;
+  --card:#101a34;
+  --ink:#e6ebf5;
+  --muted:#9aa3b2;
+
+  --brand:#3b82f6;
+  --accent:#22d3ee;
+
+  --border:rgba(255,255,255,0.10);
+  --chip:rgba(255,255,255,0.06);
+
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.25);
 }
+
+/* Light theme ONLY when .theme-light is on <html> */
+html.theme-light{
+  --bg:#f7f8fc;
+  --panel:#ffffff;
+  --card:#ffffff;
+  --ink:#0f172a;
+  --muted:#5b6473;
+
+  --border:#e6e8ef;
+  --chip:rgba(15,23,42,0.06);
+}
+
+/* Explicit dark (optional, helpful for clarity) */
+html.theme-dark{
+  --bg:#0b1220;
+  --panel:#0f1830;
+  --card:#101a34;
+  --ink:#e6ebf5;
+  --muted:#9aa3b2;
+
+  --border:rgba(255,255,255,0.10);
+  --chip:rgba(255,255,255,0.06);
+}
+
 
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -105,14 +131,24 @@ body { background:var(--bg); color:var(--ink); }
 }
 
 /* Header */
-.site-header{
+/* .site-header{
   position: sticky;
   top: 0;
   z-index: 10;
   background: rgba(11,18,32,0.6);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
+} */
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in oklab, var(--bg) 60%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
+
 .header-inner{
   display:flex; align-items:center; justify-content:space-between;
   padding: .6rem 0;
@@ -140,14 +176,34 @@ body { background:var(--bg); color:var(--ink); }
 .chips li{background:var(--chip); padding:.4rem .7rem; border:1px solid var(--border); border-radius:.6rem; font-size:.9rem}
 
 .hero-card{display:grid}
-.bio-card{
+/* .bio-card{
   border:1px solid var(--border); background:var(--panel);
   border-radius: 1rem; padding: 1rem 1rem;
   box-shadow: var(--shadow);
-}
+} */
 .bio-card dl{display:grid; grid-template-columns: auto 1fr; gap:.25rem .75rem; margin:0}
-.bio-card dt{color:var(--muted)}
-.bio-card dd{margin:0}
+/* .bio-card dt{color:var(--muted)}
+.bio-card dd{margin:0} */
+
+.bio-card{
+  background:var(--panel);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:1rem;
+  padding:1rem;
+  box-shadow:var(--shadow);
+}
+.bio-card h3{ color:var(--ink); }
+.bio-card dt{ color:var(--muted); }
+.bio-card dd{ color:var(--ink); }
+
+.drawer{
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+  color:var(--ink);
+}
+.drawer .meta{ color:var(--muted); }
+
 
 /* Projects */
 .projects{padding: 2rem 0}
@@ -254,10 +310,19 @@ body { background:var(--bg); color:var(--ink); }
 
 
 /* Skills Section */
-.skills {
+/* .skills {
   padding: 3rem 0;
-}
+} */
 
+
+.skill{
+  grid-column: span 6;
+  background: var(--card);     /* was var(--card-bg) */
+  border: 1px solid var(--border); /* was var(--card-border) */
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
 .skills h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
