@@ -326,8 +326,8 @@
   </main>
 
   <!-- DETAIL DRAWER -->
-  <div id="overlay" class="overlay" aria-hidden="true"></div>
-  <aside id="detailDrawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
+  <div id="overlay" class="overlay"  aria-hidden="true" hidden></div>
+  <!-- <aside id="detailDrawer" class="drawer" aria-hidden="true" aria-labelledby="drawerTitle" role="dialog">
     <button class="drawer-close" aria-label="Close details">&times;</button>
     <div class="drawer-scroll">
       <img id="drawerImage" class="drawer-image" alt="" />
@@ -340,15 +340,48 @@
           <div><strong>Tech:</strong> <span id="drawerTech"></span></div>
         </div>
         <p id="drawerLong" class="drawer-long"></p>
-        <div class="drawer-links">
+        <div id="drawerLinksRow" class="drawer-links">
           <a id="drawerGit" class="btn" href="https://github.com/kamilsahil" target="_blank" rel="noopener">GitHub</a>
-          <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Docs</a>
-          <a id="drawerDemo" class="btn ghost" href="https://www.linkedin.com/in/kamil-sahikl-s-b5354549954/" target="_blank" rel="noopener">LinkedIn</a>
-          <a id="drawerDemo" class="btn ghost" href="https://medium.com/@mr.kamran.suleyman" target="_blank" rel="noopener">Medium</a>
+          
+
+          <a id="drawerDocs"    class="btn ghost" href="#" target="_blank" rel="noopener">Docs</a>
+          <a id="drawerLinkedIn"class="btn ghost" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="drawerMedium"  class="btn ghost" href="#" target="_blank" rel="noopener">Medium</a>
+          <a id="drawerDemo"    class="btn ghost" href="#" target="_blank" rel="noopener">Live</a>
         </div>
       </div>
     </div>
-  </aside>
+  </aside> -->
+<aside id="detailDrawer" class="drawer" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="drawer-scroll">
+    <header class="drawer-header">
+      <h3 id="drawerTitle" class="drawer-title"></h3>
+
+      <div class="drawer-meta">
+        <span id="drawerYear" class="meta-chip"></span>
+        <ul id="drawerCats" class="meta-chips"></ul>
+        <ul id="drawerTech" class="meta-chips tech"></ul>
+      </div>
+
+      <nav class="drawer-actions">
+        <a id="drawerGit" class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a id="drawerDocs" class="btn ghost" href="#" target="_blank" rel="noopener">Docs</a>
+        <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Live</a>
+        <a id="drawerLinkedIn" class="btn ghost" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a id="drawerMedium" class="btn ghost" href="#" target="_blank" rel="noopener">Medium</a>
+      </nav>
+
+      <button class="drawer-close" type="button" aria-label="Close">×</button>
+    </header>
+
+    <img id="drawerImage" class="drawer-image" alt="">
+    <p id="drawerShort" class="drawer-short"></p>
+    <div id="drawerLong" class="drawer-long"></div>
+  </div>
+</aside>
+
+
+  
 
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -359,3 +392,10 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+<!-- <a id="drawerDemo" class="btn ghost" href="#" target="_blank" rel="noopener">Docs</a>
+          <a id="drawerDemo" class="btn ghost" href="https://www.linkedin.com/in/kamil-sahikl-s-b5354549954/" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="drawerDemo" class="btn ghost" href="https://medium.com/@mr.kamran.suleyman" target="_blank" rel="noopener">Medium</a> -->

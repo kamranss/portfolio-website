@@ -232,7 +232,10 @@ const projects = [
 city and membership drivers of average ticket size and margin.`,
     tech: ["Power BI", "DAX"],
     github: "#",
-    demo: "#"
+    docs:   "https://drive.google.com/...", // optional
+    linkedin: "https://www.linkedin.com/in/...", // optional
+    medium: "https://medium.com/@...", // optional
+    demo:   "#" // optional live link
   },
   {
     id: "frontend-portfolio",
@@ -525,10 +528,209 @@ filterButtons.forEach(btn => {
   });
 });
 
-// Drawer (detail tab ~ half screen)
+
+
+
+// const overlay = document.getElementById("overlay");
+// const drawer  = document.getElementById("detailDrawer");
+// const closeBtn = drawer.querySelector(".drawer-close");
+
+// const elTitle = document.getElementById("drawerTitle");
+// const elShort = document.getElementById("drawerShort");
+// const elYear  = document.getElementById("drawerYear");
+// const elCats  = document.getElementById("drawerCats");
+// const elTech  = document.getElementById("drawerTech");
+// const elLong  = document.getElementById("drawerLong");
+// const elImage = document.getElementById("drawerImage");
+
+
+// const elGit      = document.getElementById("drawerGit");
+// const elDocs     = document.getElementById("drawerDocs");
+// const elLinkedIn = document.getElementById("drawerLinkedIn");
+// const elMedium   = document.getElementById("drawerMedium");
+// const elDemo     = document.getElementById("drawerDemo");
+
+
+// ------- Drawer elements (already present in your file) -------
+
+
+
+
+
+
+
+// const overlay = document.getElementById("overlay");
+// const drawer  = document.getElementById("detailDrawer");
+// const closeBtn = drawer.querySelector(".drawer-close");
+
+// const elTitle = document.getElementById("drawerTitle");
+// const elShort = document.getElementById("drawerShort");
+// const elYear  = document.getElementById("drawerYear");
+
+
+// const elCats  = document.getElementById("drawerCats");
+// const elTech  = document.getElementById("drawerTech");
+
+// const elLong  = document.getElementById("drawerLong");
+// const elImage = document.getElementById("drawerImage");
+
+
+// const elGit      = document.getElementById("drawerGit");
+// const elDocs     = document.getElementById("drawerDocs");
+// const elDemo     = document.getElementById("drawerDemo");
+// const elLinkedIn = document.getElementById("drawerLinkedIn");
+// const elMedium   = document.getElementById("drawerMedium");
+
+
+ // Helper: set or hide a link
+  // function setLink(el, url) {
+  //   if (!el) return;
+  //   if (url && url !== "#") {
+  //     el.href = url;
+  //     el.style.display = "";
+  //   } else {
+  //     el.removeAttribute("href");
+  //     el.style.display = "none";
+  //   }
+  // }
+
+
+
+  // Helpers
+  //   function setLink(el, url){
+  //     if (!el) return;
+  //     if (url && url !== "#"){ el.href = url; el.style.display = ""; }
+  //     else { el.removeAttribute("href"); el.style.display = "none"; }
+  //   }
+  //   function renderChips(list, el){
+  //     if (!el) return;
+  //     const items = (list || []).map(v => `<li>${v}</li>`).join("");
+  //     el.innerHTML = items;
+  //   }
+
+
+
+  // const linksRow = document.getElementById("drawerLinksRow");
+
+// function openDrawer(projectId) {
+//   const p = projects.find(x => x.id === projectId);
+//   if (!p) return;
+
+
+//   const visibleButtons = [elGit, elDocs, elLinkedIn, elMedium, elDemo]
+//   .some(el => el && el.style.display !== "none");
+
+//   if (linksRow) {
+//     linksRow.style.display = visibleButtons ? "" : "none";
+//   }
+
+
+//   elTitle.textContent = p.title;
+//   elShort.textContent = p.short;
+//   elYear.textContent  = p.year ?? "";
+//   elCats.textContent  = (p.categories || []).join(", ");
+//   elTech.textContent  = (p.tech || []).join(", ");
+
+//   elLong.innerHTML = p.long || "";
+
+
+//   elImage.src = p.image || "";
+//   elImage.alt = (p.title || "") + " preview image";
+
+ 
+//   setLink(elGit,      p.github);
+//   setLink(elDocs,     p.docs);
+//   setLink(elLinkedIn, p.linkedin);
+//   setLink(elMedium,   p.medium);
+//   setLink(elDemo,     p.demo);
+
+//   // Open drawer
+//   overlay.classList.add("open");
+//   overlay.setAttribute("aria-hidden", "false");
+//   drawer.classList.add("open");
+//   drawer.setAttribute("aria-hidden", "false");
+//   closeBtn.focus();
+// }
+// Open dialog
+
+
+
+
+// function openDrawer(projectId){
+//   const p = projects.find(x => x.id === projectId);
+//   if (!p) return;
+
+
+//   elTitle.textContent = p.title || "";
+//   elYear.textContent  = p.year ? String(p.year) : "";
+//   renderChips(p.categories, elCats);
+//   renderChips(p.tech, elTech);
+
+
+//   elShort.textContent = p.short || "";
+//   elLong.innerHTML    = p.long || "";
+//   elImage.src = p.image || "";
+//   elImage.alt = (p.title || "") + " preview image";
+
+
+//   setLink(elGit,      p.github);
+//   setLink(elDocs,     p.docs);
+//   setLink(elDemo,     p.demo);
+//   setLink(elLinkedIn, p.linkedin);
+//   setLink(elMedium,   p.medium);
+
+
+//   overlay.classList.add("open");
+//   overlay.setAttribute("aria-hidden", "false");
+//   drawer.classList.add("open");
+//   drawer.setAttribute("aria-hidden", "false");
+//   closeBtn.focus();
+// }
+
+
+
+
+
+
+
+
+// function closeDrawer() {
+//   overlay.classList.remove("open");
+//   overlay.setAttribute("aria-hidden", "true");
+//   drawer.classList.remove("open");
+//   drawer.setAttribute("aria-hidden", "true");
+// }
+
+// document.addEventListener("click", (e) => {
+//   const detailBtn = e.target.closest(".open-details");
+//   const card = e.target.closest(".card");
+//   if (detailBtn) {
+//     openDrawer(detailBtn.dataset.id);
+//   } else if (card && e.target.tagName !== "A" && !e.target.closest(".open-details")) {
+
+//     openDrawer(card.dataset.id);
+//   }
+// });
+
+// overlay.addEventListener("click", closeDrawer);
+// closeBtn.addEventListener("click", closeDrawer);
+// document.addEventListener("keydown", (e) => {
+//   if (e.key === "Escape") closeDrawer();
+// });
+
+
+
+
+
+
+
+
+
+
+// ---------- Dialog wiring (robust) ----------
+// -------- Modal wiring (single source of truth) --------
 const overlay = document.getElementById("overlay");
-const drawer = document.getElementById("detailDrawer");
-const closeBtn = drawer.querySelector(".drawer-close");
+const drawer  = document.getElementById("detailDrawer");
 
 const elTitle = document.getElementById("drawerTitle");
 const elShort = document.getElementById("drawerShort");
@@ -537,103 +739,115 @@ const elCats  = document.getElementById("drawerCats");
 const elTech  = document.getElementById("drawerTech");
 const elLong  = document.getElementById("drawerLong");
 const elImage = document.getElementById("drawerImage");
-const elGit   = document.getElementById("drawerGit");
-const elDemo  = document.getElementById("drawerDemo");
 
-function openDrawer(projectId) {
+const elGit      = document.getElementById("drawerGit");
+const elDocs     = document.getElementById("drawerDocs");
+const elDemo     = document.getElementById("drawerDemo");
+const elLinkedIn = document.getElementById("drawerLinkedIn");
+const elMedium   = document.getElementById("drawerMedium");
+
+let lastFocus = null;
+
+function setLink(el, url){
+  if (!el) return;
+  if (url && url !== "#"){ el.href = url; el.style.display = ""; }
+  else { el.removeAttribute("href"); el.style.display = "none"; }
+}
+function renderChips(list, el){
+  el.innerHTML = (list || []).map(v => `<li>${v}</li>`).join("");
+}
+function getFocusable(container){
+  return Array.from(container.querySelectorAll(
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+  ));
+}
+
+function openDrawer(projectId){
   const p = projects.find(x => x.id === projectId);
   if (!p) return;
 
-  // elTitle.textContent = p.title;
-  // elShort.textContent = p.short;
-  // elYear.textContent  = p.year ?? "";
-  // elCats.textContent  = p.categories.join(", ");
-  // elTech.textContent  = p.tech.join(", ");
-  // elLong.textContent  = p.long;
-  // elImage.src = p.image;
-  // elImage.alt = p.title + " preview image";
-  // elGit.href  = p.github || "#";
-  // elDemo.href = p.demo  || "#";
+  // header/meta
+  elTitle.textContent = p.title || "";
+  elYear.textContent  = p.year ? String(p.year) : "";
+  renderChips(p.categories, elCats);
+  renderChips(p.tech, elTech);
 
-  // overlay.classList.add("open");
-  // overlay.setAttribute("aria-hidden", "false");
-  // drawer.classList.add("open");
-  // drawer.setAttribute("aria-hidden", "false");
-  // // trap focus to drawer for accessibility
-  // closeBtn.focus();
+  // body
+  elShort.textContent = p.short || "";
+  elLong.innerHTML    = p.long || "";
+  elImage.src = p.image || "";
+  elImage.alt = (p.title || "") + " preview image";
 
-  
-  elTitle.textContent = p.title;
-  elShort.textContent = p.short;
-  elYear.textContent  = p.year ?? "";
-  elCats.textContent  = p.categories.join(", ");
-  elTech.textContent  = p.tech.join(", ");
+  // actions
+  setLink(elGit,      p.github);
+  setLink(elDocs,     p.docs);
+  setLink(elDemo,     p.demo);
+  setLink(elLinkedIn, p.linkedin);
+  setLink(elMedium,   p.medium);
 
-  // ⬇️ render the Medium-style HTML content
-  elLong.innerHTML    = p.long;
+  // show
+  lastFocus = document.activeElement;
+  document.body.classList.add("modal-open");
+  overlay.classList.add("open");      overlay.setAttribute("aria-hidden","false");
+  drawer.classList.add("open");       drawer.setAttribute("aria-hidden","false");
 
-  elImage.src = p.image;
-  elImage.alt = p.title + " preview image";
-  elGit.href  = p.github || "#";
-  elDemo.href = p.demo  || "#";
-
-  overlay.classList.add("open");
-  overlay.setAttribute("aria-hidden", "false");
-  drawer.classList.add("open");
-  drawer.setAttribute("aria-hidden", "false");
-  closeBtn.focus();
+  const f = getFocusable(drawer);
+  (f[0] || drawer).focus();           // focus trap begin
 }
 
-function closeDrawer() {
-  overlay.classList.remove("open");
-  overlay.setAttribute("aria-hidden", "true");
-  drawer.classList.remove("open");
-  drawer.setAttribute("aria-hidden", "true");
+function closeDrawer(){
+  document.body.classList.remove("modal-open");
+  overlay.classList.remove("open");   overlay.setAttribute("aria-hidden","true");
+  drawer.classList.remove("open");    drawer.setAttribute("aria-hidden","true");
+  if (lastFocus) lastFocus.focus();
 }
 
+// Open: click on card or its “Details” button
 document.addEventListener("click", (e) => {
-  const detailBtn = e.target.closest(".open-details");
+  const btn = e.target.closest(".open-details");
+  if (btn) { openDrawer(btn.dataset.id); return; }
+
   const card = e.target.closest(".card");
-  if (detailBtn) {
-    openDrawer(detailBtn.dataset.id);
-  } else if (card && e.target.tagName !== "A" && !e.target.closest(".open-details")) {
-    // clicking anywhere on the card (except links) opens details
-    openDrawer(card.dataset.id);
-  }
+  if (card && !e.target.closest("a")) openDrawer(card.dataset.id);
 });
 
-overlay.addEventListener("click", closeDrawer);
-closeBtn.addEventListener("click", closeDrawer);
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeDrawer();
+// Close: overlay, close button, Esc
+document.addEventListener("click", (e) => {
+  if (e.target === overlay) closeDrawer();
+  if (e.target.closest(".drawer-close")) closeDrawer();
 });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
-
-
-
-// // THEME: OS preference first, then saved choice
-// const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-// const saved = localStorage.getItem('theme');
-// const theme = saved || (prefersDark ? 'dark' : 'light');
-// document.documentElement.classList.toggle('theme-dark', theme === 'dark');
-// document.documentElement.classList.toggle('theme-light', theme === 'light');
-
-// const btnTheme = document.getElementById('themeToggle');
-// if (btnTheme) {
-//   btnTheme.textContent = document.documentElement.classList.contains('theme-dark') ? '🌙' : '☀️';
-//   btnTheme.addEventListener('click', () => {
-//     const dark = !document.documentElement.classList.contains('theme-dark');
-//     document.documentElement.classList.toggle('theme-dark', dark);
-//     document.documentElement.classList.toggle('theme-light', !dark);
-//     localStorage.setItem('theme', dark ? 'dark' : 'light');
-//     btnTheme.textContent = dark ? '🌙' : '☀️';
-//   });
-
-
-  
-// }
 
   const toggle = document.getElementById('skills-toggle');
   const panel  = document.getElementById('more-skills');
@@ -651,58 +865,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
     }
   });
 
-
-
-
-
-
-
-
-// delete it
-// ===== THEME (works across all pages) =====
-// (function () {
-//   const KEY = 'theme'; // 'dark' | 'light'
-//   const html = document.documentElement;
-
-//   function setTheme(t) {
-//     html.classList.toggle('theme-dark', t === 'dark');
-//     html.classList.toggle('theme-light', t === 'light');
-//     localStorage.setItem(KEY, t);
-//     const btn = document.getElementById('themeToggle');
-//     if (btn) btn.textContent = (t === 'dark') ? '🌙' : '☀️';
-//   }
-
-//   function getInitial() {
-//     const saved = localStorage.getItem(KEY);
-//     if (saved === 'dark' || saved === 'light') return saved;
-//     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-//     return prefersDark ? 'dark' : 'light';
-//   }
-
-//   // Initialize after DOM is ready
-//   const init = () => setTheme(getInitial());
-//   if (document.readyState === 'loading') {
-//     document.addEventListener('DOMContentLoaded', init);
-//   } else {
-//     init();
-//   }
-
-//   // Click handler (delegated so it works on every page)
-//   document.addEventListener('click', (e) => {
-//     const btn = e.target.closest('#themeToggle');
-//     if (!btn) return;
-//     e.preventDefault();
-//     const current = html.classList.contains('theme-dark') ? 'dark' : 'light';
-//     setTheme(current === 'dark' ? 'light' : 'dark');
-//   });
-
-//   // Keep tabs/pages in sync
-//   window.addEventListener('storage', (e) => {
-//     if (e.key === KEY && (e.newValue === 'dark' || e.newValue === 'light')) {
-//       setTheme(e.newValue);
-//     }
-//   });
-// })();
 
 
 /* =========================

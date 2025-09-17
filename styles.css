@@ -255,7 +255,7 @@ body { background:var(--bg); color:var(--ink); }
 }
 
 /* Drawer (detail pane) */
-.overlay{
+/* .overlay{
   position: fixed; inset:0; background: rgba(0,0,0,0.35);
   opacity:0; visibility:hidden; transition: .25s ease;
   z-index: 90;
@@ -290,7 +290,165 @@ body { background:var(--bg); color:var(--ink); }
 .drawer-body h3{margin-top:.6rem}
 .meta{display:flex; flex-wrap:wrap; gap:1rem; margin:.6rem 0 1rem; color:var(--muted)}
 .drawer-long{white-space: pre-line}
-.drawer-links{display:flex; gap:.6rem}
+.drawer-links{display:flex; gap:.6rem} */
+
+
+
+
+/* ---- Dialog style (centered) ---- */
+/* .overlay{
+  position: fixed; inset:0; background: rgba(0,0,0,0.45);
+  opacity:0; visibility:hidden; transition: .25s ease; z-index: 90;
+}
+.overlay.open{opacity:1; visibility:visible}
+
+.drawer{
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  pointer-events: none;         
+  z-index: 100;
+}
+.drawer.open{ pointer-events: auto; }
+
+.drawer-scroll{
+  width: min(960px, 92vw);
+  max-height: min(90vh, 980px);
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: auto;
+  padding-bottom: 1rem;
+}
+
+
+.drawer-close{
+  position: fixed;
+  top: clamp(8px, 2vh, 16px);
+  right: clamp(8px, 3vw, 24px);
+  font-size: 2rem; line-height: 1;
+  background: transparent; color: var(--ink);
+  border: none; cursor: pointer; z-index: 110;
+}
+
+
+.drawer-header{
+  position: sticky; top: 0;
+  background: color-mix(in oklab, var(--panel) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 1rem;
+  display: grid;
+  gap: .6rem;
+} */
+
+
+
+
+
+
+/* .drawer { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; z-index: 100; }
+.drawer.open { pointer-events: auto; } */
+
+/* Overlay */
+.overlay{ /* support either id or class */
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.28);     /* 👈 visible background */
+  backdrop-filter: blur(3px) saturate(1.05);
+  -webkit-backdrop-filter: blur(3px) saturate(1.05);
+  opacity: 0; visibility: hidden;
+  transition: opacity .18s ease;
+  z-index: 900;                    /* below drawer */
+}
+.overlay.open{
+  opacity: 1;
+  visibility: visible;
+}
+#overlay.open{
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal root */
+.drawer{
+  display: none;               /* hidden by default */
+  position: fixed; inset: 0;
+  z-index: 100;
+  place-items: center;
+  pointer-events: none;
+}
+.drawer.open{
+  display: grid;               /* becomes a centered grid */
+  pointer-events: auto;
+}
+
+/* Card */
+.drawer-scroll{
+  width: min(960px, 92vw);
+  max-height: min(90vh, 980px);
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: auto;
+
+  /* entry animation */
+  transform: translateY(10px) scale(.985);
+  opacity: 0;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.drawer.open .drawer-scroll{
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Header */
+.drawer-header{
+  position: sticky; top: 0;
+  background: color-mix(in oklab, var(--panel) 85%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: .9rem 1rem;
+  display: grid; gap: .6rem;
+}
+.drawer-title{ margin: 0; font-size: 1.15rem; }
+.drawer-actions{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.meta-chip{ padding:.2rem .55rem; border-radius:999px; background:var(--chip); border:1px solid var(--border); font-size:.8rem; }
+.meta-chips{ display:flex; gap:.4rem; margin:0; padding:0; list-style:none; }
+.meta-chips li{ padding:.2rem .55rem; border-radius:999px; background:var(--chip); border:1px solid var(--border); font-size:.8rem; color:var(--muted); }
+
+/* Close button */
+.drawer-close{
+  position: absolute; top:.6rem; right:.8rem;
+  font-size: 1.6rem; line-height: 1;
+  background: transparent; border: 0; color: var(--ink); cursor: pointer;
+}
+
+/* Body bits */
+.drawer-image{ width:100%; aspect-ratio:16/9; object-fit:cover; background:#0d1427; display:block; }
+.drawer-short{ padding:.8rem 1rem 0; margin:0; color:var(--muted); }
+.drawer-long{ padding:.6rem 1rem 1.2rem; }
+
+/* Lock page scroll when modal open */
+body.modal-open{ overflow:hidden; }
+/* Open state */
+#drawer.open{ transform: translateX(0); }
+
+/* Optional: prevent scroll on body while open but KEEP background visible */
+.body-lock { overflow: hidden; }
+
+/* mobile */
+@media (max-width: 640px){
+  .drawer-actions .btn{ padding:.5rem .7rem; }
+}
+
+
+
+
+
+
 
 /* Contact */
 .contact{padding:2rem 0}
@@ -552,6 +710,10 @@ html:not(.dark) .chip-primary{
 
 
 .chips-collapsible[hidden] { display: none !important; }
+
+
+
+
 
 
 
