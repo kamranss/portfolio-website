@@ -305,17 +305,160 @@ zero-dependency JavaScript drawer/filters pattern.`,
   demo: "https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8"
 },
   {
-    id: "mobile-app",
-    title: "Mobile Stock Tracker (Prototype)",
-    categories: ["Mobile", "Frontend"],
-    year: 2024,
-    image: "assets/mobile.svg",
-    short: "Lightweight prototype for managing watchlists and portfolios.",
-    long: `Mobile-first UI prototype exploring list virtualization and card details for stock data.`,
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    demo: "#"
+    id: "powerbi-cleaning",
+    title: "Cleaning Sales Data with Power BI",
+    categories: ["Power BI", "Data"],
+    year: 2025,
+    image: "assets/data cleaning.png",
+    short: "Two approaches: Power Query UI (no-code) and a one-click M script for strict, reproducible cleaning.",
+    long: `
+      <h4>🎯 Goal</h4>
+      <p>Fix errors, standardize fields, and remove unreliable rows so dashboards and KPIs are trustworthy.</p>
+
+      <h4>🧭 What I cleaned</h4>
+      <ul>
+        <li><strong>Membership:</strong> "Nomal" → "Normal"</li>
+        <li><strong>Dates:</strong> cast to Date + remove date errors</li>
+        <li><strong>Numerics:</strong> enforce types on Unit price, Quantity, Tax, Total, Rating</li>
+        <li><strong>Ratings:</strong> squash outliers (≥99 → 9)</li>
+        <li><strong>Returns:</strong> add <code>IsReturn</code> and normalize negative <code>Quantity</code> → absolute</li>
+        <li><strong>Unit price placeholders:</strong> drop 999 / 9999 / 99999</li>
+        <li><strong>Nulls:</strong> strict removal (drop row if any column is null)</li>
+      </ul>
+
+      <h4>🛠️ Manual (no-code) in Power Query</h4>
+      <ol>
+        <li>Trim text on key columns (Invoice ID, City, Membership, Gender, Product line, Payment)</li>
+        <li>Replace Values → Membership: <em>Nomal</em> → <em>Normal</em></li>
+        <li>Set types (Unit price/Tax/Total: Decimal; Quantity: Whole; Date: Date)</li>
+        <li>Clean rating outliers: create custom column → <code>if [Rating] >= 99 then 9 else [Rating]</code></li>
+        <li>Flag returns: add <code>IsReturn = [Quantity] &lt; 0</code>, then make <code>Quantity</code> absolute</li>
+        <li>Exclude placeholder prices (filter out 999/9999/99999)</li>
+        <li>Strict null removal (UI or tiny M step below)</li>
+      </ol>
+
+      <h4>⚡ Automated — One-Click M Script (Option B)</h4>
+      <p>Paste into <em>Home → Transform data → Advanced Editor</em>. Change <code>SourcePath</code> to your file.</p>
+      <pre><code>// OPTION B: Full-row null removal + returns modeled
+  // - Trim text
+  // - Fix "Nomal"→"Normal"
+  // - Set data types
+  // - Remove date errors
+  // - Clean Ratings (>=99 → 9)
+  // - Flag returns (IsReturn) + normalize Quantity
+  // - Drop placeholder Unit prices (999/9999/99999)
+  // - Strict null sweep: drop row if ANY column is null
+
+  let
+      // SETTINGS
+      SourcePath = "D:/Code/Power BI/sales-data-cleaning/PriceCo_Sales_DataWrangling-2-1.xlsx",
+
+      // 1) LOAD & HEADERS
+      Source      = Excel.Workbook(File.Contents(SourcePath), null, true),
+      SampleSheet = Source{[Item="Sample", Kind="Sheet"]}[Data],
+      Promoted    = Table.PromoteHeaders(SampleSheet, [PromoteAllScalars = true]),
+
+      // 2) TRIM TEXT
+      Trimmed =
+          Table.TransformColumns(
+              Promoted,
+              {
+                  {"Invoice ID",   Text.Trim, type text},
+                  {"City",         Text.Trim, type text},
+                  {"Membership",   Text.Trim, type text},
+                  {"Gender",       Text.Trim, type text},
+                  {"Product line", Text.Trim, type text},
+                  {"Payment",      Text.Trim, type text}
+              }
+          ),
+
+      // 3) TYPES + MEMBERSHIP FIX
+      Typed =
+          Table.TransformColumnTypes(
+              Trimmed,
+              {
+                  {"Unit price_mxp", type number},
+                  {"Quantity",       Int64.Type},
+                  {"Tax 15%",        type number},
+                  {"Total_mxp",      type number},
+                  {"Date",           type any},
+                  {"Rating",         type number}
+              }
+          ),
+      MembershipFixed =
+          Table.ReplaceValue(Typed, "Nomal", "Normal", Replacer.ReplaceText, {"Membership"}),
+
+      // 4) DATE CAST + REMOVE DATE ERRORS
+      DateTyped         = Table.TransformColumnTypes(MembershipFixed, {{"Date", type date}}),
+      DateErrorsRemoved = Table.RemoveRowsWithErrors(DateTyped, {"Date"}),
+
+      // 5) CLEAN RATINGS (>=99 → 9; keep nulls)
+      RatingClean =
+          Table.TransformColumns(
+              DateErrorsRemoved,
+              {{"Rating", each if _ = null then null else if _ >= 99 then 9 else _, type number}}
+          ),
+
+      // 6) DROP PLACEHOLDER UNIT PRICES
+      PriceClean =
+          Table.SelectRows(
+              RatingClean,
+              each not List.Contains({999, 9999, 99999}, [Unit price_mxp])
+          ),
+
+      // 7) FLAG RETURNS + NORMALIZE QUANTITY
+      AddedReturnFlag =
+          Table.AddColumn(PriceClean, "IsReturn", each [Quantity] <> null and [Quantity] < 0, type logical),
+      QuantityPositive =
+          Table.TransformColumns(
+              AddedReturnFlag,
+              {{"Quantity", each if _ = null then null else if _ < 0 then Number.Abs(_) else _, Int64.Type}}
+          ),
+
+      // (Optional) flip totals/tax for returns:
+      // FlippedTotals =
+      //     Table.TransformColumns(
+      //         QuantityPositive,
+      //         {
+      //             {"Total_mxp", each if [IsReturn] then -_ else _, type number},
+      //             {"Tax 15%",   each if [IsReturn] then -_ else _, type number}
+      //         }
+      //     ),
+
+      // 8) STRICT NULL SWEEP (drop if ANY column is null)
+      NoNulls_AllColumns =
+          Table.SelectRows(
+              QuantityPositive,
+              each List.NonNullCount(Record.ToList(_)) = Table.ColumnCount(QuantityPositive)
+          )
+  in
+      NoNulls_AllColumns</code></pre>
+
+      <h4>📊 Before vs After (Ratings)</h4>
+      <table>
+        <thead><tr><th>Customer ID</th><th>Original Rating</th><th>Cleaned Rating</th></tr></thead>
+        <tbody>
+          <tr><td>C001</td><td>7</td><td>7</td></tr>
+          <tr><td>C002</td><td>999</td><td>9</td></tr>
+          <tr><td>C003</td><td>5</td><td>5</td></tr>
+          <tr><td>C004</td><td>9999</td><td>9</td></tr>
+          <tr><td>C005</td><td>99999</td><td>9</td></tr>
+          <tr><td>C006</td><td>10</td><td>10</td></tr>
+          <tr><td>C007</td><td>3</td><td>3</td></tr>
+        </tbody>
+      </table>
+
+      <h4>🔗 Links</h4>
+      <ul>
+        <li>💻 GitHub: <a href="https://github.com/kamranss/sales-data-cleaning" target="_blank" rel="noopener">kamranss/sales-data-cleaning</a></li>
+        <li>📝 Medium: <a href="https://medium.com/@mr.kamran.suleyman/cleaning-sales-data-with-power-bi-manual-ui-one-click-script-a7120505eb77" target="_blank" rel="noopener">article</a></li>
+      </ul>
+    `,
+    tech: ["Power BI", "Power Query (M)", "Data Cleaning"],
+    github: "https://github.com/kamranss/sales-data-cleaning",
+    demo: "https://medium.com/@mr.kamran.suleyman/cleaning-sales-data-with-power-bi-manual-ui-one-click-script-a7120505eb77"
   },
+
   {
     id: "devops-ci",
     title: "CI/CD Pipeline Showcase",
@@ -323,8 +466,7 @@ zero-dependency JavaScript drawer/filters pattern.`,
     year: 2024,
     image: "assets/devops.svg",
     short: "Sample GitHub Actions pipeline for building, testing, and linting multi-service apps.",
-    long: `Authored reusable workflows and artifact caching to speed up builds; smoke tests and
-branch protections for reliable releases.`,
+    long: `Authored reusable workflows and artifact caching to speed up builds; smoke tests and branch protections for reliable releases.`,
     tech: ["GitHub Actions", "Docker", "YAML"],
     github: "#",
     demo: "#"
