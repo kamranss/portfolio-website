@@ -465,19 +465,104 @@ const projects = [
   github: "https://github.com/kamranss/sales-ticket-insights",
   demo: "https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8"
 },
-  {
-    id: "S-Maint",
-    title: "Web Application .NET and REACT",
-    categories: ["Frontend"],
-    year: 2025,
-    image: "assets/s-maint.png",
-    short: "A clean, responsive UI kit in vanilla HTML/CSS/JS—cards, filters, and modal drawer.",
-    long: `This very site! Focus on accessible, semantic HTML; CSS variables and grid; and a
-    zero-dependency JavaScript drawer/filters pattern.`,
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    demo: "#"
-  },
+      {
+      id: "S-Maint",
+      title: "Asset Management & Maintenance System (AMMS)",
+      categories: ["Backend", "Frontend", "Data", "PM"],
+      year: 2025,
+      image: "assets/s-maint.png",
+      short:
+        "End-to-end platform for equipment tracking, maintenance scheduling, inventory automation, and AI-assisted operations.",
+      long: `
+        <h4>◆ Why this system</h4>
+        <ul>
+          <li>Prevent costly breakdowns by never missing maintenance windows.</li>
+          <li>Unified view of distributed assets (forklifts, trucks, cranes, etc.).</li>
+          <li>Inventory and parts availability tied directly to service events.</li>
+          <li>Move off spreadsheets to an auditable, scalable platform.</li>
+        </ul>
+
+        <h4>◆ BPMN-driven workflows</h4>
+        <p><strong>Design first:</strong> I modeled end-to-end flows in BPMN to align product, frontend, backend, and data early.</p>
+        <ul>
+          <li><strong>Create Asset & Assign Plan:</strong> register asset → attach maintenance plan (MP) → define services (oil, engine, inspection).</li>
+          <li><strong>Usage & Notifications:</strong> capture mileage/hours/cycles → if thresholds exceeded, raise visual alerts → reset after service.</li>
+          <li><strong>Inventory Automation:</strong> parts consumed during service auto-decrement stock → if below min, create <em>PartOrder</em> draft.</li>
+        </ul>
+
+        <h4>◆ Data model (PostgreSQL + EF Core)</h4>
+        <ul>
+          <li><strong>Core:</strong> Equipment, Model, Manufacture, Department, MaintenancePlan, Service, Part.</li>
+          <li><strong>Junctions:</strong> EquipmentMaintenancePlan, MaintenancePlanServices, MpAssetServiceParts.</li>
+          <li><strong>History & Telemetry:</strong> UsageHistories, MaintenancePlanServiceHistories.</li>
+          <li><strong>Principles:</strong> normalized design, reuse via junctions, full traceability, indexes on hot paths.</li>
+        </ul>
+
+        <h4>◆ Backend engineering (.NET)</h4>
+        <ul>
+          <li><strong>Architecture:</strong> Clean + DDD layers (Domain · Application · Persistence · Infrastructure · API).</li>
+          <li><strong>Tech:</strong> .NET 8, EF Core, PostgreSQL, Serilog, AutoMapper, FluentValidation, Swagger/OpenAPI.</li>
+          <li><strong>Use cases:</strong> assign MP, compute due status, log usage, parts reservation, low-stock signal.</li>
+          <li><strong>Contracts:</strong> REST endpoints with DTOs, versioned APIs, validation and logging pipelines.</li>
+        </ul>
+
+        <h4>◆ Frontend (React + MUI)</h4>
+        <ul>
+          <li><strong>Stack:</strong> React (Vite), MUI, React Query, React Router.</li>
+          <li><strong>Views:</strong> Dashboard (health & alerts), Asset directory & detail, Maintenance Plans, Inventory, Auth.</li>
+          <li><strong>UX details:</strong> status chips, threshold badges, inline filters, role-based actions.</li>
+          <li><strong>Assistant:</strong> GPT-style helper for quick “what’s due” questions and service guidance.</li>
+        </ul>
+
+        <h4>◆ Tooling</h4>
+        <ul>
+          <li>VS 2022 (.NET), VS Code (React), Postman & Swagger for API tests.</li>
+          <li>diagrams.net for BPMN, dbdiagram.io for ERD.</li>
+        </ul>
+
+        <h4>◆ Build timeline (8 weeks)</h4>
+        <ul>
+          <li><strong>W1–2:</strong> Frontend scaffolding, dashboard shell, assistant stub.</li>
+          <li><strong>W3–4:</strong> ERD + migrations, core APIs, asset form.</li>
+          <li><strong>W5:</strong> MPs & services CRUD, parts linking, filters.</li>
+          <li><strong>W6–7:</strong> Asset/MP detail, assignment workflow, histories.</li>
+          <li><strong>W8:</strong> Alerts & thresholds, inventory decrement & reorder draft.</li>
+        </ul>
+
+        <h4>◆ Roadmap</h4>
+        <ul>
+          <li>Always-on telemetry via IoT modules (mileage/hours from field).</li>
+          <li>Predictive maintenance models (failure risk & optimal service time).</li>
+          <li>Technician mobile app (offline tasks, photos, signatures).</li>
+          <li>Procurement integrations for automatic PO submission.</li>
+        </ul>
+
+        <h4>◆ References</h4>
+        <ul>
+          <li>ASP.NET Core, EF Core, Serilog, AutoMapper, Swagger/OpenAPI, MUI, Postman, dbdiagram.io.</li>
+        </ul>
+
+         <h4>🔗 Resources</h4>
+          <ul>
+            <li>💻 GitHub Web: <a href="https://github.com/kamranss/infrastructure-management-api" target="_blank" rel="noopener">kamranss/sales-ticket-insights</a></li>
+            <li>💻 GitHub Front: <a href="https://github.com/kamranss/infrastructure-management-app" target="_blank" rel="noopener">kamranss/sales-ticket-insights</a></li>
+            <li>📝 Medium: <a href="https://medium.com/@mr.kamran.suleyman/asset-management-maintenance-system-amms-my-engineering-journey-1bb6027f3894" target="_blank" rel="noopener">article</a></li>
+          </ul>
+      `,
+      tech: [".NET 8", "C#", "EF Core", "PostgreSQL", "Serilog", "AutoMapper", "FluentValidation", "Swagger", "React", "Vite", "MUI"],
+      github: "https://github.com/kamranss/infrastructure-management-api",
+      github: "https://github.com/kamranss/infrastructure-management-app",
+      demo: "#",
+      medium: "https://medium.com/@mr.kamran.suleyman/asset-management-maintenance-system-amms-my-engineering-journey-1bb6027f3894" ,
+      stages: [
+        { id: "bpmn",      icon: "▣", title: "Design",     blurb: "BPMN flows, scope, constraints", bullets: ["AS-IS/TO-BE mapped", "Alert thresholds", "Parts policies"], link: null },
+        { id: "data",      icon: "⌬", title: "Data",       blurb: "ERD, migrations, seed data",     bullets: ["Normalized schema", "Histories & junctions", "Indexes planned"], link: null },
+        { id: "backend",   icon: "⌁", title: "Backend",    blurb: "clean architecture + APIs",      bullets: ["EF Core repos", "Validation & logging", "OpenAPI"], link: null },
+        { id: "frontend",  icon: "◧", title: "Frontend",   blurb: "React + MUI UI/UX",              bullets: ["Dashboard & alerts", "Asset/MP detail", "Inventory views"], link: null },
+        { id: "inventory", icon: "⦿", title: "Automation", blurb: "stock & reorder logic",          bullets: ["Auto decrement", "Low-stock signal", "PartOrder draft"], link: null },
+        { id: "release",   icon: "◆", title: "Release",    blurb: "hardening & docs",               bullets: ["Auth & roles", "Swagger walkthrough", "Runbooks"], link: null }
+      ]
+    },
   {
     id: "powerbi-priceco",
     title: "PriceCo Retail Dashboard (Power BI)",
