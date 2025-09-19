@@ -3,11 +3,17 @@
   --bg:#0b1220;
   --panel:#0f1830;
   --card:#101a34;
+
+  --card-bg: var(--card);           /* ✅ add */
+  --card-border: var(--border);     /* ✅ add */
+  --page: var(--panel);             /* ✅ add */
+
   --ink:#e6ebf5;
   --muted:#9aa3b2;
 
   --brand:#3b82f6;
   --accent:#22d3ee;
+  --accent-2:#60a5fa;               /* ✅ add */
 
   --border:rgba(255,255,255,0.10);
   --chip:rgba(255,255,255,0.06);
@@ -34,6 +40,11 @@ html.theme-light{
   --bg:#f7f8fc;
   --panel:#ffffff;
   --card:#ffffff;
+  
+  --card-bg:#ffffff;                /* ✅ match light */
+  --card-border:#e6e8ef;            /* ✅ match light */
+
+  
   --ink:#0f172a;
   --muted:#5b6473;
 
@@ -223,7 +234,7 @@ s
 }
 
 #resume .experience-blurb__title{
-  margin:0 0 10px 0;
+  margin:0 0 10px 0;  
   font-size:15px;
   font-weight:600;
   color: var(--blurb-fg);
@@ -737,3 +748,130 @@ html:not(.dark) .chip-primary{
 .quick-contacts a:hover .icon {
   fill: var(--ink);
 }
+
+
+/*stages */
+
+
+/* --- PMIS phase cards inside dialog --- */
+/* .stage-wrap { padding: .6rem 1rem 1rem; }
+.stage-title { margin: .6rem 0 .4rem; color: var(--accent); font-size: 1rem; }
+
+.stage-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .75rem;
+}
+
+.stage-card{
+  grid-column: span 6;                
+  border: 1px solid var(--border);
+  border-radius: .9rem;
+  padding: .8rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .6rem .75rem;
+  align-items: start;
+  transition: transform .12s ease, border-color .2s ease, background .2s ease;
+}
+.stage-card:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
+  background: color-mix(in oklab, var(--card) 85%, var(--brand) 15%);
+}
+
+.stage-icon{
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+}
+
+.stage-head{ display:flex; gap:.4rem; align-items:center; }
+.stage-name{ margin:0; font-weight:700; font-size: .98rem; }
+.stage-blurb{ margin:.15rem 0 .35rem; color: var(--muted); font-size: .9rem; }
+
+.stage-bullets{ margin:.2rem 0 0 .9rem; padding:0; }
+.stage-bullets li{ margin:.12rem 0; font-size: .9rem; }
+
+.stage-link{
+  margin-top:.35rem;
+  display:inline-flex; gap:.4rem; align-items:center;
+  font-weight:600; text-decoration:none; color: var(--brand);
+}
+.stage-link:hover{ text-decoration: underline; }
+
+
+@media (max-width: 720px){
+  .stage-card { grid-column: span 12; }
+} */
+
+
+.stage-wrap { padding: .6rem 1rem 1rem; }
+.stage-title { margin: .6rem 0 .4rem; color: var(--accent); font-size: 1rem; }
+
+.stage-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .75rem;
+}
+.stage-card{
+  grid-column: span 6;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: .9rem;
+  padding: .8rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .6rem .75rem;
+  align-items: start;
+  transition: transform .12s ease, border-color .2s ease, background .2s ease;
+}
+.stage-card:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--brand) 40%, var(--border));
+  background: color-mix(in oklab, var(--card) 85%, var(--brand) 15%);
+}
+.stage-icon{
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
+}
+.stage-head{ display:flex; gap:.4rem; align-items:center; }
+.stage-name{ margin:0; font-weight:700; font-size: .98rem; }
+.stage-blurb{ margin:.15rem 0 .35rem; color: var(--muted); font-size: .9rem; }
+
+/* 
+.stage-bullets{ margin:.2rem 0 0 .9rem; padding:0; }
+.stage-bullets li{ margin:.12rem 0; font-size: .9rem; } */
+
+.stage-bullets{
+  margin:.3rem 0 0;         
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem .5rem;         
+}
+.stage-bullets li{
+  display:inline-flex;
+  align-items:center;
+  padding:.25rem .55rem;
+  border-radius:999px;
+  background:var(--chip);
+  border:1px solid var(--border);
+  font-size:.85rem;
+  line-height:1.1;
+  color:var(--ink);
+}
+
+.stage-link{ margin-top:.35rem; display:inline-flex; gap:.4rem; align-items:center; font-weight:600; text-decoration:none; color: var(--brand); }
+.stage-link:hover{ text-decoration: underline; }
+@media (max-width: 720px){ .stage-card { grid-column: span 12; } }

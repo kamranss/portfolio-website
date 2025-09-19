@@ -3,20 +3,6 @@
 // -- Project Data --
 // Edit this array to add or update your projects.
 const projects = [
-//   {
-//     id: "pmis",
-//     title: "Port Management Information System (PMIS)",
-//     categories: ["Backend", "Power BI", "Data"],
-//     year: 2024,
-//     image: "assets/backend.svg",
-//     short: "Event-driven .NET APIs + SQL with Power BI dashboards for cargo, vessel, and yard KPIs.",
-//     long: `Designed core services (C#, .NET, SQL Server) with event streaming (Kafka) and
-// Power BI dashboards for real-time operations. Owned backlog, data contracts, and
-// integration specs with Railway, Customs, and Finance systems.`,
-//     tech: [".NET", "C#", "SQL Server", "Kafka", "Power BI"],
-//     github: "#",
-//     demo: "#"
-//   },
   {
     id: "pmis",
     title: "Port Management Information System (PMIS) — Digitalization Initiative",
@@ -79,9 +65,51 @@ const projects = [
         <li>📁 Source Materials (Docs/Slides): <a href="https://drive.google.com/drive/u/2/folders/1VCv7g1yrxa6mGcc23bcbvV-WTVxmDve0" target="_blank" rel="noopener">Google Drive folder</a></li>
       </ul>
     `,
-    tech: [".NET Core", "SQL Server", "Kafka", "React/Angular", "Power BI", "JIRA", "Confluence", "BPMN"],
+    tech: [ "Power BI", "JIRA", "Confluence", "BPMN"],
     github: "#",
-    demo: "#"
+    demo: "#",
+      stages: [
+    {
+      id: "initiation",
+      icon: "🚀",
+      title: "Initiation",
+      blurb: "stakeholders, Vision, Success Metrics",
+      bullets: ["Project Charter", "Product Vision", "Stakeholders", "Statement of Work"],
+      link: "https://drive.google.com/drive/u/2/folders/1bU0MEhokNNvrjCyHn6LF1aWyUYdkiLvX"
+    },
+    {
+      id: "analysis",
+      icon: "🔎",
+      title: "Analysis",
+      blurb: "Interviews, BPMN, Data flows",
+      bullets: ["User Personas", "BMC", "Modules", "RACI", "Risk Management", "EBM", "" ],
+      link: "https://drive.google.com/drive/u/2/folders/1pARKDkaqYjdVZIS0kjCsG2a7aYt6HBib"
+    },
+    {
+      id: "planning",
+      icon: "🗺️",
+      title: "Planning",
+      blurb: "Roadmap, Releases, RAID, Resourcing",
+      bullets: ["Change Management", "WBS", "Communication Plan", "Usage Plan"],
+      link: "https://drive.google.com/drive/u/2/folders/1rjQ7Nqo93Or0D7-EbHqx0gtguXwik9TZ"
+    },
+    {
+      id: "execution",
+      icon: "⚙️",
+      title: "Execution",
+      blurb: "APIs, Dashboards, Integration",
+      bullets: ["Weekly Status", "Testing", "Increment", "Retrospective"],
+      link: "https://drive.google.com/drive/u/2/folders/12TuldZIqfWJtR523pAQtxoeJHC5-H3n9"
+    },
+    {
+      id: "FRD",
+      icon: "📄",
+      title: "FRD",
+      blurb: "Requirements Baseline (PCS, Gate, Yard, TOS)",
+      bullets: ["Features", "User stories", "Code List", "Rules"],
+      link: "https://drive.google.com/drive/u/2/folders/112foiKHTOtG7Ax6a5sMvPNi1njRF2etx"
+    }
+  ]
   },
    {
     id: "sales-sql-python",
@@ -222,9 +250,9 @@ const projects = [
     demo: "https://github.com/kamranss/monte-carlo-simulation/blob/main/Monte%20Carlo%20simulation.ipynb"
   },
     {
-    id: "powerbi-cleaning",
+    id: "powerbi-data-cleaning",
     title: "Cleaning Sales Data with Power BI",
-    categories: ["Power BI", "Data", "Data Cleaning", "M-Script"],
+    categories: ["Power BI", "Data Transformation", "Data Cleaning", "M-Script"],
     year: 2025,
     image: "assets/data cleaning.png",
     short: "Two approaches: Power Query UI (no-code) and a one-click M script for strict, reproducible cleaning.",
@@ -376,7 +404,9 @@ const projects = [
     `,
     tech: ["Power BI", "Power Query (M)", "Data Cleaning"],
     github: "https://github.com/kamranss/sales-data-cleaning",
-    demo: "https://medium.com/@mr.kamran.suleyman/cleaning-sales-data-with-power-bi-manual-ui-one-click-script-a7120505eb77"
+    linkedin: "https://www.linkedin.com/feed/update/urn:li:activity:7373519905758879744/",
+    DailyDev: "https://app.daily.dev/posts/cleaning-sales-data-with-power-bi-w1btxoxjn",
+    medium: "https://medium.com/@mr.kamran.suleyman/cleaning-sales-data-with-power-bi-manual-ui-one-click-script-a7120505eb77"
   },
   {
   id: "sales-ticket-insights",
@@ -436,6 +466,19 @@ const projects = [
   demo: "https://medium.com/@mr.kamran.suleyman/visual-insights-on-average-sales-ticket-city-membership-and-product-line-impact-3b6e5d2bb7c8"
 },
   {
+    id: "S-Maint",
+    title: "Web Application .NET and REACT",
+    categories: ["Frontend"],
+    year: 2025,
+    image: "assets/s-maint.png",
+    short: "A clean, responsive UI kit in vanilla HTML/CSS/JS—cards, filters, and modal drawer.",
+    long: `This very site! Focus on accessible, semantic HTML; CSS variables and grid; and a
+    zero-dependency JavaScript drawer/filters pattern.`,
+    tech: ["HTML", "CSS", "JavaScript"],
+    github: "#",
+    demo: "#"
+  },
+  {
     id: "powerbi-priceco",
     title: "PriceCo Retail Dashboard (Power BI)",
     categories: ["Power BI", "Data"],
@@ -451,20 +494,7 @@ city and membership drivers of average ticket size and margin.`,
     medium: "https://medium.com/@...", // optional
     demo:   "#" // optional live link
   },
-  {
-    id: "frontend-portfolio",
-    title: "Frontend Portfolio UI",
-    categories: ["Frontend"],
-    year: 2025,
-    image: "assets/Programming.jpg",
-    short: "A clean, responsive UI kit in vanilla HTML/CSS/JS—cards, filters, and modal drawer.",
-    long: `This very site! Focus on accessible, semantic HTML; CSS variables and grid; and a
-zero-dependency JavaScript drawer/filters pattern.`,
-    tech: ["HTML", "CSS", "JavaScript"],
-    github: "#",
-    demo: "#"
-  },
-  
+
   {
     id: "devops-ci",
     title: "CI/CD Pipeline Showcase",
@@ -531,6 +561,66 @@ filterButtons.forEach(btn => {
 
 
 
+
+// stages
+
+// --- STAGES: mount + render (self-healing) ---
+function ensureStagesMount() {
+  let wrap = document.getElementById("drawerStages");
+  let grid = document.getElementById("stageGrid");
+  if (wrap && grid) return { wrap, grid };
+
+  const img = document.getElementById("drawerImage");
+  if (!img) return { wrap: null, grid: null };
+
+  wrap = document.createElement("section");
+  wrap.id = "drawerStages";
+  wrap.className = "stage-wrap";
+  wrap.hidden = true;
+  wrap.innerHTML = `
+    <h4 class="stage-title">Project Phases</h4>
+    <div class="stage-grid" id="stageGrid"></div>
+  `;
+  img.insertAdjacentElement("afterend", wrap);
+  grid = wrap.querySelector("#stageGrid");
+  return { wrap, grid };
+}
+
+function renderStages(p) {
+  const { wrap, grid } = ensureStagesMount();
+  if (!wrap || !grid) return;
+
+  const hasStages = Array.isArray(p.stages) && p.stages.length > 0;
+  if (!hasStages) {
+    wrap.hidden = true;
+    grid.innerHTML = "";
+    return;
+  }
+
+  grid.innerHTML = p.stages.map(s => `
+    <article class="stage-card" data-stage="${s.id || ''}">
+      <div class="stage-icon" aria-hidden="true">${s.icon || "📌"}</div>
+      <div>
+        <div class="stage-head">
+          <h5 class="stage-name">${s.title || ""}</h5>
+        </div>
+        <p class="stage-blurb">${s.blurb || ""}</p>
+        ${Array.isArray(s.bullets) && s.bullets.length ? `
+          <ul class="stage-bullets">
+            ${s.bullets.map(b => `<li>${b}</li>`).join("")}
+          </ul>` : ""
+        }
+        ${s.link ? `<a class="stage-link" href="${s.link}" target="_blank" rel="noopener">View docs →</a>` : ""}
+      </div>
+    </article>
+  `).join("");
+
+  wrap.hidden = false;
+}
+
+
+
+
 // ---------- Dialog wiring (robust) ----------
 // -------- Modal wiring (single source of truth) --------
 const overlay = document.getElementById("overlay");
@@ -573,14 +663,18 @@ function openDrawer(projectId){
   // header/meta
   elTitle.textContent = p.title || "";
   elYear.textContent  = p.year ? String(p.year) : "";
+  renderStages(p)
   renderChips(p.categories, elCats);
   renderChips(p.tech, elTech);
 
+
+;
   // body
   elShort.textContent = p.short || "";
   elLong.innerHTML    = p.long || "";
   elImage.src = p.image || "";
   elImage.alt = (p.title || "") + " preview image";
+
 
   // actions
   setLink(elGit,      p.github);
@@ -596,8 +690,11 @@ function openDrawer(projectId){
   drawer.classList.add("open");       drawer.setAttribute("aria-hidden","false");
 
   const f = getFocusable(drawer);
-  (f[0] || drawer).focus();           // focus trap begin
+  (f[0] || drawer).focus();           
 }
+
+
+
 
 function closeDrawer(){
   document.body.classList.remove("modal-open");
